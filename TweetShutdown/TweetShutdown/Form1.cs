@@ -8,53 +8,41 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
-using Yedda;
+using TweetSharp;
+using System.Diagnostics;
+using System.IO;
 
 namespace TweetShutdown
 {
     public partial class frmTweetMyPc : Form
     {
+        TwitterService service;
+        OAuthRequestToken requestToken;
+        OAuthAccessToken access;
+
+        string atmdir;
+        string logFileDir;
+        string accesstokenFileDir;
+
         public frmTweetMyPc()
         {
             InitializeComponent();
-        }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            if (txtUserName.Text.Trim() == "")
-            {
-                lblStatus.Text = "* Please Enter Twitter Username *";
-                txtUserName.Focus();
-                return;
-            }
-            else if (txtPassword.Text.Trim() == "")
-            {
-                lblStatus.Text = "* Please Enter Twitter Password *";
-                txtPassword.Focus();
-                return;
-            }
-            else
-            {
-                lblStatus.Text = "";
-            }
+            atmdir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            atmdir = atmdir.Remove(0, 6);
+            atmdir += "\\";
+            logFileDir = atmdir + "logs.txt";
+            accesstokenFileDir = atmdir + "acc.tkt";
 
-            // Check for Valid Username and Password and then Save Settings
-            Twitter objTwitter = new Twitter();
-            XmlDocument Updates = new XmlDocument();
+            // Pass your credentials to the service
+            service = new TwitterService("245BuFYM4biAh8XAjF4A", "Fb3vuG7hKVYR0OCEHMWaictTkWQTjw1V7lLfN5ok");
 
-            try // Try logging in
+            if (File.Exists(accesstokenFileDir))
             {
-                Updates = objTwitter.GetUserTimelineAsXML(txtUserName.Text.Trim(), txtPassword.Text.Trim());
-                Properties.Settings.Default.UserName = txtUserName.Text.Trim();
-                Properties.Settings.Default.Password = txtPassword.Text.Trim();
-                this.WindowState = FormWindowState.Maximized;
-                this.ShowInTaskbar = false;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Failed to Login to Twitter with the values supplied. Please check your login details. "+ex.Message);
-                txtUserName.Focus();
-                return;
+                // User authenticates using the previous Access Token
+                Byte[] data = File.ReadAllBytes(accesstokenFileDir);
+                access = (OAuthAccessToken)helper.ByteArrayToObject(data);
+                service.AuthenticateWith(access.Token, access.TokenSecret);
             }
         }
 
@@ -78,41 +66,25 @@ namespace TweetShutdown
 
         private void tmrTweet_Tick(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.UserName == "")
+            if (Properties.Settings.Default.Running == true)
             {
-                return;
-            }
-            else
-            {
-                Twitter objTwitter = new Twitter();
-                XmlDocument Updates = new XmlDocument();
-
-                try // Try logging in
+                try
                 {
-                    Updates = objTwitter.GetUserTimelineAsXML(Properties.Settings.Default.UserName.Trim(),
-                        Properties.Settings.Default.Password.Trim());
+                    IEnumerable<TwitterStatus> tweetsByUser = service.ListTweetsOnUserTimeline(1);
+                    foreach (var tweet in tweetsByUser)
+                    {
+                        txtResult.Text = tweet.Text;
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error : Failed to Login to Twitter with the values supplied. Please check your login details.");
-                    return;
+                    File.AppendAllText(logFileDir, "\n" + ex.Message);
+                    lblStatus.Text = "Error: Failed to Login to Twitter!";
                 }
-
-                try
-                {
-                    XmlNode node = Updates.SelectSingleNode("/statuses/status/id");
-                    if(node.InnerText.Trim() != Properties.Settings.Default.LastID.Trim())
-                    {
-                        // Compare the Tweet ID to check for new tweets
-                        Properties.Settings.Default.LastID = node.InnerText.Trim();
-                        node = Updates.SelectSingleNode("/statuses/status/text");
-                        ProcessTweet(node.InnerText.Trim());
-                    }
-                }
-                catch(Exception ex)
-                {
-                    return;
-                }
+            }
+            else
+            {
+                return;
             }
         }
 
@@ -144,12 +116,76 @@ namespace TweetShutdown
 
         private void ShowHideWindows()
         {
-            tmrTweet.Enabled = false;
-            txtUserName.Text = Properties.Settings.Default.UserName.Trim();
-            txtPassword.Text = Properties.Settings.Default.Password.Trim();
             if (Properties.Settings.Default.AutomaticStart == true) chkStartAutomatic.Checked = true;
+            if (Properties.Settings.Default.Running == true)
+            {
+                txtVerfier.Text = Properties.Settings.Default.PIN;
+                btnStart.Text = "Stop Tweet Shutdown!";
+            }
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
+        }
+
+        private void frmTweetMyPc_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.Save();
+        }
+
+        private void btnAuthorize_Click(object sender, EventArgs e)
+        {
+            // Step 1 - Retrieve an OAuth Request Token
+            requestToken = service.GetRequestToken();
+
+            // Step 2 - Redirect to the OAuth Authorization URL
+            Uri uri = service.GetAuthorizationUri(requestToken);
+            Process.Start(uri.ToString());
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            if (txtVerfier.Text == "")
+            {
+                lblStatus.Text = "* Please Click Authorize and get PIN ! *";
+            }
+            if (Properties.Settings.Default.Running == false)
+            {
+                // Step 3 - Exchange the Request Token for an Access Token
+                string verifier = txtVerfier.Text; // <-- This is input into your application by your user
+                access = service.GetAccessToken(requestToken, verifier);
+
+                // Step 4 - User authenticates using the Access Token
+                service.AuthenticateWith(access.Token, access.TokenSecret);
+
+                 
+                File.Delete(accesstokenFileDir);
+                Byte[] data = helper.ObjectToByteArray(access);
+                File.WriteAllBytes(accesstokenFileDir, data);
+                
+                Properties.Settings.Default.PIN = txtVerfier.Text;
+                Properties.Settings.Default.Running = true;
+                btnStart.Text = "Stop Tweet Shutdown!";
+
+                tmrTweet.Enabled = true;
+                this.WindowState = FormWindowState.Minimized;
+                this.ShowInTaskbar = false;
+            }
+            else if (Properties.Settings.Default.Running == true)
+            {
+                Properties.Settings.Default.Running = false;
+                btnStart.Text = "Start Tweet Shutdown!";
+            }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            if(Properties.Settings.Default.Running == true) tmrTweet.Enabled = true;
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
         }
     }
 }

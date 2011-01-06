@@ -25,30 +25,6 @@ namespace TweetShutdown.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string UserName {
-            get {
-                return ((string)(this["UserName"]));
-            }
-            set {
-                this["UserName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Password {
-            get {
-                return ((string)(this["Password"]));
-            }
-            set {
-                this["Password"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool AutomaticStart {
             get {
@@ -68,6 +44,30 @@ namespace TweetShutdown.Properties {
             }
             set {
                 this["LastID"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PIN {
+            get {
+                return ((string)(this["PIN"]));
+            }
+            set {
+                this["PIN"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool Running {
+            get {
+                return ((bool)(this["Running"]));
+            }
+            set {
+                this["Running"] = value;
             }
         }
     }
