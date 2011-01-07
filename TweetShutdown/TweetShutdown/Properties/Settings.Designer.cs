@@ -37,30 +37,6 @@ namespace TweetShutdown.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string LastID {
-            get {
-                return ((string)(this["LastID"]));
-            }
-            set {
-                this["LastID"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string PIN {
-            get {
-                return ((string)(this["PIN"]));
-            }
-            set {
-                this["PIN"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool Running {
             get {
@@ -68,6 +44,77 @@ namespace TweetShutdown.Properties {
             }
             set {
                 this["Running"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string OAuthScreenName {
+            get {
+                return ((string)(this["OAuthScreenName"]));
+            }
+            set {
+                this["OAuthScreenName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("212110174-VfzWmJ6ti0P19ODjqOgN7Ri5DvTN1BWV2GKsij2l")]
+        public string OAuthToken {
+            get {
+                return ((string)(this["OAuthToken"]));
+            }
+            set {
+                this["OAuthToken"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("DKLJCI40tXcMZ4coA3Etrw0KDg5wcGA1ZWM8wdNQ")]
+        public string OauthTokenSecret {
+            get {
+                return ((string)(this["OauthTokenSecret"]));
+            }
+            set {
+                this["OauthTokenSecret"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int OauthUserId {
+            get {
+                return ((int)(this["OauthUserId"]));
+            }
+            set {
+                this["OauthUserId"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.DateTime LastShutdownTime {
+            get {
+                return ((global::System.DateTime)(this["LastShutdownTime"]));
+            }
+            set {
+                this["LastShutdownTime"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UserName {
+            get {
+                return ((string)(this["UserName"]));
+            }
+            set {
+                this["UserName"] = value;
             }
         }
     }

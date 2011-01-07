@@ -5,14 +5,26 @@
     <Setting Name="AutomaticStart" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="LastID" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="PIN" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
     <Setting Name="Running" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="OAuthScreenName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="OAuthToken" Type="System.String" Scope="User">
+      <Value Profile="(Default)">212110174-VfzWmJ6ti0P19ODjqOgN7Ri5DvTN1BWV2GKsij2l</Value>
+    </Setting>
+    <Setting Name="OauthTokenSecret" Type="System.String" Scope="User">
+      <Value Profile="(Default)">DKLJCI40tXcMZ4coA3Etrw0KDg5wcGA1ZWM8wdNQ</Value>
+    </Setting>
+    <Setting Name="OauthUserId" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LastShutdownTime" Type="System.DateTime" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="UserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

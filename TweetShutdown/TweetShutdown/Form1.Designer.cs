@@ -31,21 +31,28 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTweetMyPc));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtResult = new System.Windows.Forms.TextBox();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.txtVerfier = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
-            this.btnAuthorize = new System.Windows.Forms.Button();
             this.chkStartAutomatic = new System.Windows.Forms.CheckBox();
             this.tmrTweet = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.editSettingsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtVerfier = new System.Windows.Forms.TextBox();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.txtResult = new System.Windows.Forms.TextBox();
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnAuthorize = new System.Windows.Forms.Button();
+            this.txtMention = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnChangeUsername = new System.Windows.Forms.Button();
+            this.btnAdvOption = new System.Windows.Forms.Button();
+            this.btnEasyStart = new System.Windows.Forms.Button();
+            this.lblUserStatus = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -55,6 +62,13 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.lblUserStatus);
+            this.groupBox1.Controls.Add(this.btnEasyStart);
+            this.groupBox1.Controls.Add(this.btnAdvOption);
+            this.groupBox1.Controls.Add(this.btnChangeUsername);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.txtMention);
             this.groupBox1.Controls.Add(this.txtResult);
             this.groupBox1.Controls.Add(this.btnStart);
             this.groupBox1.Controls.Add(this.txtVerfier);
@@ -65,36 +79,62 @@
             this.groupBox1.Location = new System.Drawing.Point(9, 38);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(236, 270);
+            this.groupBox1.Size = new System.Drawing.Size(480, 269);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Options";
+            // 
+            // txtResult
+            // 
+            this.txtResult.Location = new System.Drawing.Point(266, 160);
+            this.txtResult.Multiline = true;
+            this.txtResult.Name = "txtResult";
+            this.txtResult.Size = new System.Drawing.Size(203, 103);
+            this.txtResult.TabIndex = 1;
+            // 
+            // btnStart
+            // 
+            this.btnStart.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.Location = new System.Drawing.Point(266, 103);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(203, 38);
+            this.btnStart.TabIndex = 7;
+            this.btnStart.Text = "ReStart Tweet Shutdown!";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            // 
+            // txtVerfier
+            // 
+            this.txtVerfier.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVerfier.Location = new System.Drawing.Point(386, 75);
+            this.txtVerfier.Name = "txtVerfier";
+            this.txtVerfier.Size = new System.Drawing.Size(83, 22);
+            this.txtVerfier.TabIndex = 6;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(263, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(117, 16);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Authorization PIN :";
             // 
             // lblStatus
             // 
             this.lblStatus.AutoSize = true;
             this.lblStatus.ForeColor = System.Drawing.Color.Red;
-            this.lblStatus.Location = new System.Drawing.Point(36, 111);
+            this.lblStatus.Location = new System.Drawing.Point(263, 144);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(0, 13);
             this.lblStatus.TabIndex = 1;
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnAuthorize
-            // 
-            this.btnAuthorize.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAuthorize.Location = new System.Drawing.Point(6, 19);
-            this.btnAuthorize.Name = "btnAuthorize";
-            this.btnAuthorize.Size = new System.Drawing.Size(223, 38);
-            this.btnAuthorize.TabIndex = 4;
-            this.btnAuthorize.Text = "Authorize Tweet Shutdown";
-            this.btnAuthorize.UseVisualStyleBackColor = true;
-            this.btnAuthorize.Click += new System.EventHandler(this.btnAuthorize_Click);
-            // 
             // chkStartAutomatic
             // 
             this.chkStartAutomatic.AutoSize = true;
-            this.chkStartAutomatic.Location = new System.Drawing.Point(27, 91);
+            this.chkStartAutomatic.Location = new System.Drawing.Point(27, 142);
             this.chkStartAutomatic.Name = "chkStartAutomatic";
             this.chkStartAutomatic.Size = new System.Drawing.Size(182, 17);
             this.chkStartAutomatic.TabIndex = 3;
@@ -111,8 +151,7 @@
             // notifyIcon1
             // 
             this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
-            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
-            this.notifyIcon1.Text = "notifyIcon1";
+            this.notifyIcon1.Text = "Tweet Shutdown!";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
@@ -136,43 +175,7 @@
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.exitToolStripMenuItem.Text = "E&xit";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(6, 66);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(117, 16);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Authorization PIN :";
-            // 
-            // txtVerfier
-            // 
-            this.txtVerfier.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVerfier.Location = new System.Drawing.Point(129, 63);
-            this.txtVerfier.Name = "txtVerfier";
-            this.txtVerfier.Size = new System.Drawing.Size(100, 22);
-            this.txtVerfier.TabIndex = 6;
-            // 
-            // btnStart
-            // 
-            this.btnStart.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(6, 127);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(223, 38);
-            this.btnStart.TabIndex = 7;
-            this.btnStart.Text = "Start Tweet Shutdown!";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
-            // 
-            // txtResult
-            // 
-            this.txtResult.Location = new System.Drawing.Point(6, 171);
-            this.txtResult.Multiline = true;
-            this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(223, 90);
-            this.txtResult.TabIndex = 1;
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // btnMinimize
             // 
@@ -206,11 +209,88 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Tweet Shutdown!";
             // 
+            // btnAuthorize
+            // 
+            this.btnAuthorize.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAuthorize.Location = new System.Drawing.Point(266, 19);
+            this.btnAuthorize.Name = "btnAuthorize";
+            this.btnAuthorize.Size = new System.Drawing.Size(203, 50);
+            this.btnAuthorize.TabIndex = 4;
+            this.btnAuthorize.Text = "Authorize Tweet Shutdown with Custom Mention";
+            this.btnAuthorize.UseVisualStyleBackColor = true;
+            this.btnAuthorize.Click += new System.EventHandler(this.btnAuthorize_Click);
+            // 
+            // txtMention
+            // 
+            this.txtMention.Location = new System.Drawing.Point(95, 19);
+            this.txtMention.Name = "txtMention";
+            this.txtMention.Size = new System.Drawing.Size(134, 20);
+            this.txtMention.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(83, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Your Username:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(111, 42);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(98, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "(E.g. @diaryno286)";
+            // 
+            // btnChangeUsername
+            // 
+            this.btnChangeUsername.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnChangeUsername.Location = new System.Drawing.Point(9, 58);
+            this.btnChangeUsername.Name = "btnChangeUsername";
+            this.btnChangeUsername.Size = new System.Drawing.Size(220, 36);
+            this.btnChangeUsername.TabIndex = 11;
+            this.btnChangeUsername.Text = "Change Username";
+            this.btnChangeUsername.UseVisualStyleBackColor = true;
+            this.btnChangeUsername.Click += new System.EventHandler(this.btnChangeUsername_Click);
+            // 
+            // btnAdvOption
+            // 
+            this.btnAdvOption.Location = new System.Drawing.Point(114, 178);
+            this.btnAdvOption.Name = "btnAdvOption";
+            this.btnAdvOption.Size = new System.Drawing.Size(115, 23);
+            this.btnAdvOption.TabIndex = 12;
+            this.btnAdvOption.Text = "Advanced Option";
+            this.btnAdvOption.UseVisualStyleBackColor = true;
+            // 
+            // btnEasyStart
+            // 
+            this.btnEasyStart.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEasyStart.Location = new System.Drawing.Point(9, 100);
+            this.btnEasyStart.Name = "btnEasyStart";
+            this.btnEasyStart.Size = new System.Drawing.Size(220, 36);
+            this.btnEasyStart.TabIndex = 13;
+            this.btnEasyStart.Text = "Start Tweet Shutdown!";
+            this.btnEasyStart.UseVisualStyleBackColor = true;
+            this.btnEasyStart.Click += new System.EventHandler(this.btnEasyStart_Click);
+            // 
+            // lblUserStatus
+            // 
+            this.lblUserStatus.AutoSize = true;
+            this.lblUserStatus.ForeColor = System.Drawing.Color.Red;
+            this.lblUserStatus.Location = new System.Drawing.Point(24, 162);
+            this.lblUserStatus.Name = "lblUserStatus";
+            this.lblUserStatus.Size = new System.Drawing.Size(0, 13);
+            this.lblUserStatus.TabIndex = 14;
+            this.lblUserStatus.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // frmTweetMyPc
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(254, 317);
+            this.ClientSize = new System.Drawing.Size(498, 316);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnMinimize);
@@ -235,7 +315,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnAuthorize;
         private System.Windows.Forms.CheckBox chkStartAutomatic;
         private System.Windows.Forms.Timer tmrTweet;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
@@ -250,6 +329,14 @@
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnAdvOption;
+        private System.Windows.Forms.Button btnChangeUsername;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtMention;
+        private System.Windows.Forms.Button btnAuthorize;
+        private System.Windows.Forms.Button btnEasyStart;
+        private System.Windows.Forms.Label lblUserStatus;
     }
 }
 

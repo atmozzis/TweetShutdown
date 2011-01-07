@@ -37,13 +37,15 @@ namespace TweetShutdown
             // Pass your credentials to the service
             service = new TwitterService("245BuFYM4biAh8XAjF4A", "Fb3vuG7hKVYR0OCEHMWaictTkWQTjw1V7lLfN5ok");
 
-            if (File.Exists(accesstokenFileDir))
-            {
-                // User authenticates using the previous Access Token
-                Byte[] data = File.ReadAllBytes(accesstokenFileDir);
-                access = (OAuthAccessToken)helper.ByteArrayToObject(data);
-                service.AuthenticateWith(access.Token, access.TokenSecret);
-            }
+            // User authenticates using the previous Access Token
+            access = new OAuthAccessToken();
+            access.ScreenName = Properties.Settings.Default.OAuthScreenName;
+            access.Token = Properties.Settings.Default.OAuthToken;
+            access.TokenSecret = Properties.Settings.Default.OauthTokenSecret;
+            access.UserId = Properties.Settings.Default.OauthUserId;
+            service.AuthenticateWith(access.Token, access.TokenSecret);
+
+            if (Properties.Settings.Default.Running == false) ShowHideWindows();
         }
 
         private void chkStartAutomatic_CheckedChanged(object sender, EventArgs e)
@@ -70,16 +72,22 @@ namespace TweetShutdown
             {
                 try
                 {
-                    IEnumerable<TwitterStatus> tweetsByUser = service.ListTweetsOnUserTimeline(1);
+                    IEnumerable<TwitterStatus> tweetsByUser = service.ListTweetsMentioningMe(200);
+                    //IEnumerable<TwitterDirectMessage> DMstoUser = service.ListDirectMessagesReceived(800);
                     foreach (var tweet in tweetsByUser)
                     {
-                        txtResult.Text = tweet.Text;
+                        if (tweet.User.ScreenName == txtMention.Text)
+                        {
+                            txtResult.Text = tweet.User + "\n" + tweet.Text + "\n" + tweet.CreatedDate.ToLongTimeString();
+                            //ProcessTweet(tweet);
+                        }
                     }
                 }
                 catch (Exception ex)
                 {
                     File.AppendAllText(logFileDir, "\n" + ex.Message);
-                    lblStatus.Text = "Error: Failed to Login to Twitter!";
+                    lblStatus.Text = "Error: Failed to access Twitter!";
+                    Properties.Settings.Default.Running = false;
                 }
             }
             else
@@ -88,20 +96,29 @@ namespace TweetShutdown
             }
         }
 
-        private void ProcessTweet(String Tweet)
+        private void ProcessTweet(TwitterStatus Tweet)
         {
-            if (Tweet == "shutdown")
+            String tweetText = Tweet.Text.Trim().ToLower();
+            if (tweetText.Contains("shutdown"))
             {
                 System.Diagnostics.Process.Start("shutdown", "-s -f -t 100"); // Shutdown
             }
-            else if (Tweet == "logoff")
+            else if (tweetText.Contains("logoff"))
             {
                 System.Diagnostics.Process.Start("shutdown", "-l -f -t 100"); // Logoff
             }
-            else if (Tweet == "restart")
+            else if (tweetText.Contains("restart"))
             {
                 System.Diagnostics.Process.Start("shutdown", "-r -f -t 100"); // Restart
             }
+            Properties.Settings.Default.Save();
+            this.Close();
+        }
+
+        private void SaveShutdownTime(TwitterStatus Tweet)
+        {
+            Properties.Settings.Default.LastShutdownTime = Tweet.CreatedDate;
+            //Properties.Settings.Default.LastTweetID = Tweet.Id;
         }
 
         private void editSettingsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -116,10 +133,11 @@ namespace TweetShutdown
 
         private void ShowHideWindows()
         {
+            txtMention.Text = Properties.Settings.Default.UserName;
             if (Properties.Settings.Default.AutomaticStart == true) chkStartAutomatic.Checked = true;
             if (Properties.Settings.Default.Running == true)
             {
-                txtVerfier.Text = Properties.Settings.Default.PIN;
+                btnEasyStart.Text = "Stop Tweet Shutdown!";
                 btnStart.Text = "Stop Tweet Shutdown!";
             }
             this.WindowState = FormWindowState.Normal;
@@ -128,6 +146,8 @@ namespace TweetShutdown
 
         private void frmTweetMyPc_FormClosing(object sender, FormClosingEventArgs e)
         {
+            this.notifyIcon1.Visible = false;
+            this.Refresh();
             Properties.Settings.Default.Save();
         }
 
@@ -143,11 +163,11 @@ namespace TweetShutdown
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            if (txtVerfier.Text == "")
+            if (txtVerfier.Text == "" && Properties.Settings.Default.Running == false)
             {
                 lblStatus.Text = "* Please Click Authorize and get PIN ! *";
             }
-            if (Properties.Settings.Default.Running == false)
+            else if (Properties.Settings.Default.Running == false)
             {
                 // Step 3 - Exchange the Request Token for an Access Token
                 string verifier = txtVerfier.Text; // <-- This is input into your application by your user
@@ -156,13 +176,13 @@ namespace TweetShutdown
                 // Step 4 - User authenticates using the Access Token
                 service.AuthenticateWith(access.Token, access.TokenSecret);
 
-                 
-                File.Delete(accesstokenFileDir);
-                Byte[] data = helper.ObjectToByteArray(access);
-                File.WriteAllBytes(accesstokenFileDir, data);
-                
-                Properties.Settings.Default.PIN = txtVerfier.Text;
+
+                Properties.Settings.Default.OAuthScreenName = access.ScreenName;
+                Properties.Settings.Default.OAuthToken = access.Token;
+                Properties.Settings.Default.OauthTokenSecret = access.TokenSecret;
+                Properties.Settings.Default.OauthUserId = access.UserId;
                 Properties.Settings.Default.Running = true;
+                btnEasyStart.Text = "Stop Tweet Shutdown!";
                 btnStart.Text = "Stop Tweet Shutdown!";
 
                 tmrTweet.Enabled = true;
@@ -172,7 +192,8 @@ namespace TweetShutdown
             else if (Properties.Settings.Default.Running == true)
             {
                 Properties.Settings.Default.Running = false;
-                btnStart.Text = "Start Tweet Shutdown!";
+                btnEasyStart.Text = "Start Tweet Shutdown!";
+                btnStart.Text = "ReStart Tweet Shutdown!";
             }
         }
 
@@ -186,6 +207,34 @@ namespace TweetShutdown
             if(Properties.Settings.Default.Running == true) tmrTweet.Enabled = true;
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnEasyStart_Click(object sender, EventArgs e)
+        {
+            if (Properties.Settings.Default.Running == false)
+            {
+                Properties.Settings.Default.Running = true;
+                btnEasyStart.Text = "Stop Tweet Shutdown!";
+                btnStart.Text = "Stop Tweet Shutdown!";
+
+                tmrTweet.Enabled = true;
+            }
+            else if (Properties.Settings.Default.Running == true)
+            {
+                Properties.Settings.Default.Running = false;
+                btnEasyStart.Text = "Start Tweet Shutdown!";
+                btnStart.Text = "ReStart Tweet Shutdown!";
+            }
+        }
+
+        private void btnChangeUsername_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.UserName = txtMention.Text;
         }
     }
 }
