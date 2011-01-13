@@ -13,10 +13,8 @@ C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetShutdown.exe
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetShutdown.pdb
-C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Hammock.ClientProfile.dll
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetSharp.Next.dll
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Newtonsoft.Json.dll
-C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Hammock.ClientProfile.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetSharp.Next.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Newtonsoft.Json.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\ResolveAssemblyReference.cache
@@ -24,3 +22,9 @@ C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource.write.1.tlog
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.frmMain.resources
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Hammock.dll
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Hammock.pdb
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Newtonsoft.Json.xml
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource-ResGen.read.6.tlog
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog

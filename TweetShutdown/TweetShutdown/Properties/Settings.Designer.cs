@@ -50,18 +50,6 @@ namespace TweetShutdown.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool running {
-            get {
-                return ((bool)(this["running"]));
-            }
-            set {
-                this["running"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
         public bool autostart {
             get {
                 return ((bool)(this["autostart"]));
@@ -80,6 +68,18 @@ namespace TweetShutdown.Properties {
             }
             set {
                 this["username"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool running {
+            get {
+                return ((bool)(this["running"]));
+            }
+            set {
+                this["running"] = value;
             }
         }
     }

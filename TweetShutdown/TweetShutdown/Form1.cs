@@ -68,12 +68,12 @@ namespace TweetShutdown
             }
             catch (Exception ex)
             {
-                LogError(ex.Message);
+                LogTwitterAccessError(ex.Message);
             }
 
             if (since_ID == 0)
             {
-                LogError("Error: Failed to get since_ID!");
+                LogTwitterAccessError("Error: Failed to get since_ID!");
             }
         }
 
@@ -81,7 +81,7 @@ namespace TweetShutdown
         {
             lblStatus.Text = "";
             this.Width = 350;
-            notifyIcon.Icon = Resources.twitterico;
+            //notifyIcon.Icon = Resources.twitterico;
             if (Properties.Settings.Default.running == true)
             {
                 ChangeUIStarted();
@@ -175,6 +175,12 @@ namespace TweetShutdown
 
         private void btnRun_Click(object sender, EventArgs e)
         {
+            if (Properties.Settings.Default.username.Trim() == "")
+            {
+                lblStatus.Text = "Error: No Username Entered!";
+                return;
+            }
+
             if (Properties.Settings.Default.running == false)
             {
                 RunTweetShutdown();
@@ -257,7 +263,7 @@ namespace TweetShutdown
             }
             catch (Exception ex)
             {
-                LogError(ex.Message);
+                LogTwitterAccessError(ex.Message);
             }
         }
 
@@ -268,9 +274,9 @@ namespace TweetShutdown
             {
                 if (tweet.User.ScreenName == Properties.Settings.Default.username)
                 {
-                    txtAdvLog.Text = tweet.User + "\n" + tweet.CreatedDate.ToLongTimeString() + "\n" + tweet.Text;
-                    MessageBox.Show(txtAdvLog.Text);
-                    //ProcessTweet(tweet);
+                    txtAdvLog.Text = tweet.User.ScreenName + "\n" + tweet.CreatedDate.ToLongTimeString() + "\n" + tweet.Text;
+                    //MessageBox.Show(txtAdvLog.Text);
+                    ProcessTweet(tweet);
                 }
             }
         }
@@ -294,9 +300,18 @@ namespace TweetShutdown
                 System.Diagnostics.Process.Start("shutdown", "-r -f -t 100"); // Restart
                 ProcessTweetSuccess();
             }
+            else if (tweetText.Contains("hibernate"))
+            {
+                Application.SetSuspendState(PowerState.Hibernate, true, false);
+            }
+            else if (tweetText.Contains("standby")
+                    || tweetText.Contains("sleep"))
+            {
+                Application.SetSuspendState(PowerState.Suspend, true, false);
+            }
         }
 
-        private void LogError(String log)
+        private void LogTwitterAccessError(String log)
         {
             String Date = DateTime.Now.ToShortDateString();
             String Time = DateTime.Now.ToShortTimeString();

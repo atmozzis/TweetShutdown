@@ -67,10 +67,10 @@ namespace TweetShutdown.Properties {
             }
         }
         
-        internal static System.Drawing.Icon twitterico {
+        internal static System.Drawing.Bitmap twitterico {
             get {
                 object obj = ResourceManager.GetObject("twitterico", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

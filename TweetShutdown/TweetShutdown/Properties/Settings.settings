@@ -8,15 +8,14 @@
     <Setting Name="oauthSecret" Type="System.String" Scope="User">
       <Value Profile="(Default)">GdyRKinH9uBNipBXcEQHqXYa6IjHF2FmcYzdNX6mtQ8</Value>
     </Setting>
-    <Setting Name="running" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
     <Setting Name="autostart" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="username" Type="System.String" Scope="User">
-      <Value Profile="(Default)">
-                </Value>
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="running" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
     </Setting>
   </Settings>
 </SettingsFile>
