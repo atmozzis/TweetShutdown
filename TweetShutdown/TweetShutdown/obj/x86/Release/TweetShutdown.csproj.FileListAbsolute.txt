@@ -22,7 +22,6 @@ C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\TweetShutdown.exe
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\TweetShutdown.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\ResolveAssemblyReference.cache
-C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.frmTweetMyPc.resources
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.Properties.Resources.resources
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\GenerateResource.read.1.tlog
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\GenerateResource.write.1.tlog
@@ -34,3 +33,4 @@ C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\TweetSharp.Next.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\Hammock.ClientProfile.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\Newtonsoft.Json.pdb
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.frmMain.resources

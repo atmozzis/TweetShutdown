@@ -15,7 +15,7 @@ namespace TweetShutdown
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTweetMyPc());
+            Application.Run(new frmMain());
         }
     }
 }

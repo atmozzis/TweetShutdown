@@ -25,96 +25,61 @@ namespace TweetShutdown.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool AutomaticStart {
+        [global::System.Configuration.DefaultSettingValueAttribute("236756857-TFOCeLwHApOJ2CdaS66D3u7ZMArXBZz9YTaLvSHu")]
+        public string oauthToken {
             get {
-                return ((bool)(this["AutomaticStart"]));
+                return ((string)(this["oauthToken"]));
             }
             set {
-                this["AutomaticStart"] = value;
+                this["oauthToken"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool Running {
+        [global::System.Configuration.DefaultSettingValueAttribute("GdyRKinH9uBNipBXcEQHqXYa6IjHF2FmcYzdNX6mtQ8")]
+        public string oauthSecret {
             get {
-                return ((bool)(this["Running"]));
+                return ((string)(this["oauthSecret"]));
             }
             set {
-                this["Running"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string OAuthScreenName {
-            get {
-                return ((string)(this["OAuthScreenName"]));
-            }
-            set {
-                this["OAuthScreenName"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("212110174-VfzWmJ6ti0P19ODjqOgN7Ri5DvTN1BWV2GKsij2l")]
-        public string OAuthToken {
-            get {
-                return ((string)(this["OAuthToken"]));
-            }
-            set {
-                this["OAuthToken"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("DKLJCI40tXcMZ4coA3Etrw0KDg5wcGA1ZWM8wdNQ")]
-        public string OauthTokenSecret {
-            get {
-                return ((string)(this["OauthTokenSecret"]));
-            }
-            set {
-                this["OauthTokenSecret"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public int OauthUserId {
-            get {
-                return ((int)(this["OauthUserId"]));
-            }
-            set {
-                this["OauthUserId"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        public global::System.DateTime LastShutdownTime {
-            get {
-                return ((global::System.DateTime)(this["LastShutdownTime"]));
-            }
-            set {
-                this["LastShutdownTime"] = value;
+                this["oauthSecret"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string UserName {
+        public string username {
             get {
-                return ((string)(this["UserName"]));
+                return ((string)(this["username"]));
             }
             set {
-                this["UserName"] = value;
+                this["username"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool running {
+            get {
+                return ((bool)(this["running"]));
+            }
+            set {
+                this["running"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool autostart {
+            get {
+                return ((bool)(this["autostart"]));
+            }
+            set {
+                this["autostart"] = value;
             }
         }
     }
