@@ -29,16 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnRun = new System.Windows.Forms.Button();
             this.btnAdvanced = new System.Windows.Forms.Button();
-            this.txtResult = new System.Windows.Forms.TextBox();
-            this.btnStart = new System.Windows.Forms.Button();
-            this.txtVerfier = new System.Windows.Forms.TextBox();
+            this.txtUsername = new System.Windows.Forms.TextBox();
+            this.txtAdvLog = new System.Windows.Forms.TextBox();
+            this.btnAdvReStart = new System.Windows.Forms.Button();
+            this.txtAdvPIN = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAuthorize = new System.Windows.Forms.Button();
+            this.btnAdvAuthorize = new System.Windows.Forms.Button();
+            this.chkAutoStart = new System.Windows.Forms.CheckBox();
             this.tmrClearStatus = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -49,9 +51,6 @@
             this.btnExit = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.tmrCheckTweet = new System.Windows.Forms.Timer(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtUsername = new System.Windows.Forms.TextBox();
-            this.chkAutoStart = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -66,18 +65,27 @@
             this.groupBox1.Controls.Add(this.btnRun);
             this.groupBox1.Controls.Add(this.btnAdvanced);
             this.groupBox1.Controls.Add(this.txtUsername);
-            this.groupBox1.Controls.Add(this.txtResult);
-            this.groupBox1.Controls.Add(this.btnStart);
-            this.groupBox1.Controls.Add(this.txtVerfier);
+            this.groupBox1.Controls.Add(this.txtAdvLog);
+            this.groupBox1.Controls.Add(this.btnAdvReStart);
+            this.groupBox1.Controls.Add(this.txtAdvPIN);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.btnAuthorize);
+            this.groupBox1.Controls.Add(this.btnAdvAuthorize);
             this.groupBox1.Controls.Add(this.chkAutoStart);
             this.groupBox1.Location = new System.Drawing.Point(9, 38);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(332, 190);
+            this.groupBox1.Size = new System.Drawing.Size(687, 190);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 13);
+            this.label3.TabIndex = 16;
+            this.label3.Text = "Username : ";
             // 
             // lblStatus
             // 
@@ -97,11 +105,10 @@
             this.btnRun.TabIndex = 13;
             this.btnRun.Text = "Start Tweet Shutdown!";
             this.btnRun.UseVisualStyleBackColor = true;
-            this.btnRun.Click += new System.EventHandler(this.btnEasyStart_Click);
+            this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnAdvanced
             // 
-            this.btnAdvanced.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdvanced.Location = new System.Drawing.Point(208, 161);
             this.btnAdvanced.Name = "btnAdvanced";
             this.btnAdvanced.Size = new System.Drawing.Size(119, 23);
@@ -110,63 +117,90 @@
             this.btnAdvanced.UseVisualStyleBackColor = true;
             this.btnAdvanced.Click += new System.EventHandler(this.btnAdvanced_Click);
             // 
-            // txtResult
+            // txtUsername
             // 
-            this.txtResult.Location = new System.Drawing.Point(365, 141);
-            this.txtResult.Multiline = true;
-            this.txtResult.Name = "txtResult";
-            this.txtResult.Size = new System.Drawing.Size(203, 103);
-            this.txtResult.TabIndex = 1;
+            this.txtUsername.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TweetShutdown.Properties.Settings.Default, "username", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtUsername.Location = new System.Drawing.Point(76, 19);
+            this.txtUsername.Name = "txtUsername";
+            this.txtUsername.Size = new System.Drawing.Size(251, 20);
+            this.txtUsername.TabIndex = 8;
+            this.txtUsername.Text = global::TweetShutdown.Properties.Settings.Default.username;
+            this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
-            // btnStart
+            // txtAdvLog
             // 
-            this.btnStart.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.Location = new System.Drawing.Point(365, 97);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(203, 38);
-            this.btnStart.TabIndex = 7;
-            this.btnStart.Text = "ReStart Tweet Shutdown!";
-            this.btnStart.UseVisualStyleBackColor = true;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.txtAdvLog.Location = new System.Drawing.Point(365, 99);
+            this.txtAdvLog.Multiline = true;
+            this.txtAdvLog.Name = "txtAdvLog";
+            this.txtAdvLog.Size = new System.Drawing.Size(316, 85);
+            this.txtAdvLog.TabIndex = 1;
             // 
-            // txtVerfier
+            // btnAdvReStart
             // 
-            this.txtVerfier.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVerfier.Location = new System.Drawing.Point(485, 69);
-            this.txtVerfier.Name = "txtVerfier";
-            this.txtVerfier.Size = new System.Drawing.Size(83, 22);
-            this.txtVerfier.TabIndex = 6;
+            this.btnAdvReStart.Enabled = false;
+            this.btnAdvReStart.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdvReStart.Location = new System.Drawing.Point(365, 70);
+            this.btnAdvReStart.Name = "btnAdvReStart";
+            this.btnAdvReStart.Size = new System.Drawing.Size(316, 23);
+            this.btnAdvReStart.TabIndex = 7;
+            this.btnAdvReStart.Text = "ReStart Service with PIN";
+            this.btnAdvReStart.UseVisualStyleBackColor = true;
+            this.btnAdvReStart.Click += new System.EventHandler(this.btnAdvReStart_Click);
+            // 
+            // txtAdvPIN
+            // 
+            this.txtAdvPIN.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAdvPIN.Location = new System.Drawing.Point(485, 42);
+            this.txtAdvPIN.Name = "txtAdvPIN";
+            this.txtAdvPIN.Size = new System.Drawing.Size(196, 22);
+            this.txtAdvPIN.TabIndex = 6;
+            this.txtAdvPIN.TextChanged += new System.EventHandler(this.txtAdvPIN_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(362, 72);
+            this.label1.Location = new System.Drawing.Point(362, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 16);
             this.label1.TabIndex = 5;
             this.label1.Text = "Authorization PIN :";
             // 
-            // btnAuthorize
+            // btnAdvAuthorize
             // 
-            this.btnAuthorize.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAuthorize.Location = new System.Drawing.Point(365, 13);
-            this.btnAuthorize.Name = "btnAuthorize";
-            this.btnAuthorize.Size = new System.Drawing.Size(203, 50);
-            this.btnAuthorize.TabIndex = 4;
-            this.btnAuthorize.Text = "Authorize Tweet Shutdown with Custom Mention";
-            this.btnAuthorize.UseVisualStyleBackColor = true;
-            this.btnAuthorize.Click += new System.EventHandler(this.btnAuthorize_Click);
+            this.btnAdvAuthorize.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdvAuthorize.Location = new System.Drawing.Point(365, 13);
+            this.btnAdvAuthorize.Name = "btnAdvAuthorize";
+            this.btnAdvAuthorize.Size = new System.Drawing.Size(316, 23);
+            this.btnAdvAuthorize.TabIndex = 4;
+            this.btnAdvAuthorize.Text = "Authorize Tweet Shutdown for Custom Mention";
+            this.btnAdvAuthorize.UseVisualStyleBackColor = true;
+            this.btnAdvAuthorize.Click += new System.EventHandler(this.btnAdvAuthorize_Click);
+            // 
+            // chkAutoStart
+            // 
+            this.chkAutoStart.AutoSize = true;
+            this.chkAutoStart.Checked = global::TweetShutdown.Properties.Settings.Default.autostart;
+            this.chkAutoStart.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::TweetShutdown.Properties.Settings.Default, "autostart", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.chkAutoStart.Location = new System.Drawing.Point(76, 53);
+            this.chkAutoStart.Name = "chkAutoStart";
+            this.chkAutoStart.Size = new System.Drawing.Size(182, 17);
+            this.chkAutoStart.TabIndex = 3;
+            this.chkAutoStart.Text = "Start Automatically with Windows";
+            this.chkAutoStart.UseVisualStyleBackColor = true;
+            this.chkAutoStart.CheckedChanged += new System.EventHandler(this.chkAutoStart_CheckedChanged);
             // 
             // tmrClearStatus
             // 
-            this.tmrClearStatus.Tick += new System.EventHandler(this.tmrTweet_Tick);
+            this.tmrClearStatus.Enabled = true;
+            this.tmrClearStatus.Tick += new System.EventHandler(this.tmrClearStatus_Tick);
             // 
             // notifyIcon
             // 
             this.notifyIcon.ContextMenuStrip = this.contextMenu;
             this.notifyIcon.Text = "Tweet Shutdown!";
             this.notifyIcon.Visible = true;
+            this.notifyIcon.DoubleClick += new System.EventHandler(this.btnEditSettings_Click);
             // 
             // contextMenu
             // 
@@ -182,19 +216,21 @@
             this.btncontextRun.Name = "btncontextRun";
             this.btncontextRun.Size = new System.Drawing.Size(186, 22);
             this.btncontextRun.Text = "&Start Tweet Shutdown!";
+            this.btncontextRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnEditSettings
             // 
             this.btnEditSettings.Name = "btnEditSettings";
             this.btnEditSettings.Size = new System.Drawing.Size(186, 22);
             this.btnEditSettings.Text = "&Edit Settings";
+            this.btnEditSettings.Click += new System.EventHandler(this.btnEditSettings_Click);
             // 
             // btncontextExit
             // 
             this.btncontextExit.Name = "btncontextExit";
             this.btncontextExit.Size = new System.Drawing.Size(186, 22);
             this.btncontextExit.Text = "E&xit";
-            this.btncontextExit.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            this.btncontextExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnHide
             // 
@@ -205,7 +241,7 @@
             this.btnHide.TabIndex = 1;
             this.btnHide.Text = "_";
             this.btnHide.UseVisualStyleBackColor = true;
-            this.btnHide.Click += new System.EventHandler(this.btnMinimize_Click);
+            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
             // 
             // btnExit
             // 
@@ -229,56 +265,26 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Tweet Shutdown!";
             // 
-            // label3
+            // tmrCheckTweet
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 22);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 13);
-            this.label3.TabIndex = 16;
-            this.label3.Text = "Username : ";
-            // 
-            // txtUsername
-            // 
-            this.txtUsername.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TweetShutdown.Properties.Settings.Default, "username", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.txtUsername.Enabled = false;
-            this.txtUsername.Location = new System.Drawing.Point(76, 19);
-            this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(251, 20);
-            this.txtUsername.TabIndex = 8;
-            this.txtUsername.Text = global::TweetShutdown.Properties.Settings.Default.username;
-            // 
-            // chkAutoStart
-            // 
-            this.chkAutoStart.AutoSize = true;
-            this.chkAutoStart.Checked = global::TweetShutdown.Properties.Settings.Default.autostart;
-            this.chkAutoStart.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::TweetShutdown.Properties.Settings.Default, "autostart", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
-            this.chkAutoStart.Location = new System.Drawing.Point(76, 53);
-            this.chkAutoStart.Name = "chkAutoStart";
-            this.chkAutoStart.Size = new System.Drawing.Size(182, 17);
-            this.chkAutoStart.TabIndex = 3;
-            this.chkAutoStart.Text = "Start Automatically with Windows";
-            this.chkAutoStart.UseVisualStyleBackColor = true;
-            this.chkAutoStart.CheckedChanged += new System.EventHandler(this.chkAutoStart_CheckedChanged);
+            this.tmrCheckTweet.Interval = 15000;
+            this.tmrCheckTweet.Tick += new System.EventHandler(this.tmrCheckTweet_Tick);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(350, 237);
+            this.ClientSize = new System.Drawing.Size(705, 237);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.btnHide);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmMain";
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tweet Shutdown";
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmTweetMyPc_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenu.ResumeLayout(false);
@@ -296,16 +302,16 @@
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem btnEditSettings;
         private System.Windows.Forms.ToolStripMenuItem btncontextExit;
-        private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.TextBox txtVerfier;
+        private System.Windows.Forms.Button btnAdvReStart;
+        private System.Windows.Forms.TextBox txtAdvPIN;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtResult;
+        private System.Windows.Forms.TextBox txtAdvLog;
         private System.Windows.Forms.Button btnHide;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAdvanced;
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.Button btnAuthorize;
+        private System.Windows.Forms.Button btnAdvAuthorize;
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.Label lblStatus;
         private System.Windows.Forms.ToolStripMenuItem btncontextRun;

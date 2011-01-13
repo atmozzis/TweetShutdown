@@ -20,7 +20,7 @@ C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetSharp.Next.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Newtonsoft.Json.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.frmTweetMyPc.resources
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.Properties.Resources.resources
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource.read.1.tlog
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.frmMain.resources

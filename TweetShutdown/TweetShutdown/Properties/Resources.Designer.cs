@@ -59,5 +59,19 @@ namespace TweetShutdown.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap twitter {
+            get {
+                object obj = ResourceManager.GetObject("twitter", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon twitterico {
+            get {
+                object obj = ResourceManager.GetObject("twitterico", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
