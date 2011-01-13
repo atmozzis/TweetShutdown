@@ -30,9 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnRun = new System.Windows.Forms.Button();
+            this.txtPCname = new System.Windows.Forms.TextBox();
             this.btnAdvanced = new System.Windows.Forms.Button();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtAdvLog = new System.Windows.Forms.TextBox();
@@ -60,9 +63,12 @@
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lblStatus);
             this.groupBox1.Controls.Add(this.btnRun);
+            this.groupBox1.Controls.Add(this.txtPCname);
             this.groupBox1.Controls.Add(this.btnAdvanced);
             this.groupBox1.Controls.Add(this.txtUsername);
             this.groupBox1.Controls.Add(this.txtAdvLog);
@@ -77,6 +83,24 @@
             this.groupBox1.Size = new System.Drawing.Size(687, 190);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 166);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "PC name : ";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(6, 166);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(64, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Username : ";
             // 
             // label3
             // 
@@ -106,6 +130,16 @@
             this.btnRun.Text = "Start Tweet Shutdown!";
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
+            // 
+            // txtPCname
+            // 
+            this.txtPCname.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TweetShutdown.Properties.Settings.Default, "pcname", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.txtPCname.Location = new System.Drawing.Point(71, 163);
+            this.txtPCname.Name = "txtPCname";
+            this.txtPCname.Size = new System.Drawing.Size(92, 20);
+            this.txtPCname.TabIndex = 8;
+            this.txtPCname.Text = global::TweetShutdown.Properties.Settings.Default.pcname;
+            this.txtPCname.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
             // btnAdvanced
             // 
@@ -188,7 +222,7 @@
             this.chkAutoStart.TabIndex = 3;
             this.chkAutoStart.Text = "Start Automatically with Windows";
             this.chkAutoStart.UseVisualStyleBackColor = true;
-            this.chkAutoStart.CheckedChanged += new System.EventHandler(this.chkAutoStart_CheckedChanged);
+            this.chkAutoStart.CheckStateChanged += new System.EventHandler(this.chkAutoStart_CheckedChanged);
             // 
             // tmrClearStatus
             // 
@@ -209,26 +243,26 @@
             this.btnEditSettings,
             this.btncontextExit});
             this.contextMenu.Name = "contextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(187, 70);
+            this.contextMenu.Size = new System.Drawing.Size(194, 70);
             // 
             // btncontextRun
             // 
             this.btncontextRun.Name = "btncontextRun";
-            this.btncontextRun.Size = new System.Drawing.Size(186, 22);
+            this.btncontextRun.Size = new System.Drawing.Size(193, 22);
             this.btncontextRun.Text = "&Start Tweet Shutdown!";
             this.btncontextRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnEditSettings
             // 
             this.btnEditSettings.Name = "btnEditSettings";
-            this.btnEditSettings.Size = new System.Drawing.Size(186, 22);
+            this.btnEditSettings.Size = new System.Drawing.Size(193, 22);
             this.btnEditSettings.Text = "&Edit Settings";
             this.btnEditSettings.Click += new System.EventHandler(this.btnEditSettings_Click);
             // 
             // btncontextExit
             // 
             this.btncontextExit.Name = "btncontextExit";
-            this.btncontextExit.Size = new System.Drawing.Size(186, 22);
+            this.btncontextExit.Size = new System.Drawing.Size(193, 22);
             this.btncontextExit.Text = "E&xit";
             this.btncontextExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -257,11 +291,10 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(143, 25);
+            this.label2.Size = new System.Drawing.Size(141, 23);
             this.label2.TabIndex = 3;
             this.label2.Text = "Tweet Shutdown!";
             // 
@@ -317,6 +350,9 @@
         private System.Windows.Forms.ToolStripMenuItem btncontextRun;
         private System.Windows.Forms.Timer tmrCheckTweet;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtPCname;
     }
 }
 

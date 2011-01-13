@@ -81,7 +81,7 @@ namespace TweetShutdown
         {
             lblStatus.Text = "";
             this.Width = 350;
-            //notifyIcon.Icon = Resources.twitterico;
+            notifyIcon.Icon = Resources.TweetShutdown;
             if (Properties.Settings.Default.running == true)
             {
                 ChangeUIStarted();
@@ -285,19 +285,24 @@ namespace TweetShutdown
         {
             String tweetText = Tweet.Text.Trim().ToLower();
 
+            if (!tweetText.Contains(Properties.Settings.Default.pcname))
+            {
+                return;
+            }
+
             if (tweetText.Contains("shutdown"))
             {
-                System.Diagnostics.Process.Start("shutdown", "-s -f -t 100"); // Shutdown
+                System.Diagnostics.Process.Start("shutdown", "-s -f -t 30"); // Shutdown
                 ProcessTweetSuccess();
             }
             else if (tweetText.Contains("logoff"))
             {
-                System.Diagnostics.Process.Start("shutdown", "-l -f -t 100"); // Logoff
+                System.Diagnostics.Process.Start("shutdown", "-l -f -t 30"); // Logoff
                 ProcessTweetSuccess();
             }
             else if (tweetText.Contains("restart"))
             {
-                System.Diagnostics.Process.Start("shutdown", "-r -f -t 100"); // Restart
+                System.Diagnostics.Process.Start("shutdown", "-r -f -t 30"); // Restart
                 ProcessTweetSuccess();
             }
             else if (tweetText.Contains("hibernate"))

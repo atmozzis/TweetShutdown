@@ -28,3 +28,28 @@ C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource-ResGen.read.6.tlog
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetShutdown.exe.config
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.exe
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.pdb
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetShutdown.exe.manifest
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetShutdown.application
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetShutdown.exe
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetShutdown.pdb
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Hammock.dll
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetSharp.Next.dll
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Newtonsoft.Json.dll
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Hammock.pdb
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetSharp.Next.pdb
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Newtonsoft.Json.pdb
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\Newtonsoft.Json.xml
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.frmMain.resources
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.Properties.Resources.resources
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource-ResGen.read.1.tlog
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource-ResGen.read.6.tlog
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource.read.1.tlog
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource-ResGen.write.1.tlog
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource.write.1.tlog
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.TrustInfo.xml
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.exe.manifest
+E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.application

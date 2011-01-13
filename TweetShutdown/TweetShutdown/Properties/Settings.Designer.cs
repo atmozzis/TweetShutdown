@@ -82,5 +82,17 @@ namespace TweetShutdown.Properties {
                 this["running"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string pcname {
+            get {
+                return ((string)(this["pcname"]));
+            }
+            set {
+                this["pcname"] = value;
+            }
+        }
     }
 }
