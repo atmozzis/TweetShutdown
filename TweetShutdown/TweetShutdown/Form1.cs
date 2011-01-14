@@ -98,11 +98,18 @@ namespace TweetShutdown
             lblStatus.Text = "";
             this.Width = 350;
             notifyIcon.Icon = Resources.TweetShutdown;
+
             if (Properties.Settings.Default.running == true)
             {
                 ChangeUIStarted();
+                //HideForm();       //  Design default, not necessary
                 this.Refresh();
-                HideForm();
+            }
+            else
+            {
+                ChangeUIStopped();
+                ShowForm();
+                this.Refresh();
             }
         }
 
@@ -120,15 +127,15 @@ namespace TweetShutdown
 
         private void HideForm()
         {
-            this.WindowState = FormWindowState.Minimized;
-            this.ShowInTaskbar = false;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-
             #region P/Invoke Method
 #if Active
             SetWindowLong(this.Handle, GWL_EXSTYLE, (GetWindowLong(this.Handle,GWL_EXSTYLE) | WS_EX_TOOLWINDOW) & ~WS_EX_APPWINDOW);
 #endif
             #endregion
+
+            this.WindowState = FormWindowState.Minimized;
+            this.ShowInTaskbar = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
         }
 
         private void ChangeUIStarted()
