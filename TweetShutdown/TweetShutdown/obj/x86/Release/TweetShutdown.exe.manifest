@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <asmv1:assembly manifestVersion="1.0" xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1">
-  <asmv1:assemblyIdentity version="1.0.0.0" name="TweetShutdown.exe" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
+  <asmv1:assemblyIdentity version="1.0.0.4" name="TweetShutdown.exe" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
   <application />
   <entryPoint>
     <assemblyIdentity name="TweetShutdown" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
@@ -93,24 +93,24 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TweetShutdown.exe" size="106496">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TweetShutdown.exe" size="107520">
       <assemblyIdentity name="TweetShutdown" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>uCHpyW4ISCUlw8UiUJ8DX513Qj8=</dsig:DigestValue>
+        <dsig:DigestValue>CqlkmGP/4cKqhlk/0/hMnb85KJs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="TweetShutdown.exe.config" size="1425">
+  <file name="TweetShutdown.exe.config" size="1534">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-      <dsig:DigestValue>BnUHwbY3AEVZudclyukRM0Fp190=</dsig:DigestValue>
+      <dsig:DigestValue>ZE7u4cqUbxv61C2QE7IEZ64Nxrc=</dsig:DigestValue>
     </hash>
   </file>
   <compatibility xmlns="urn:schemas-microsoft-com:compatibility.v1">

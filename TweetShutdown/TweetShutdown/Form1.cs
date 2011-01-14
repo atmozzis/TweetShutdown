@@ -27,6 +27,7 @@ namespace TweetShutdown
         string exeDir;
         string errorlogDir;
         long since_ID;
+        bool TweetShuttingDown = false;
 
         public frmMain()
         {
@@ -211,12 +212,6 @@ namespace TweetShutdown
             tmrCheckTweet.Enabled = false;
         }
 
-        private void ProcessTweetSuccess()
-        {
-            Properties.Settings.Default.Save();
-            this.Close();
-        }
-
         private void btnAdvAuthorize_Click(object sender, EventArgs e)
         {
             // Step 1 - Retrieve an OAuth Request Token
@@ -269,6 +264,7 @@ namespace TweetShutdown
 
         private void StartProcessing()
         {
+            TweetShuttingDown = false;
             IEnumerable<TwitterStatus> tweetsByUser = service.ListTweetsMentioningMeSince(since_ID, 200);
             foreach (var tweet in tweetsByUser)
             {
@@ -277,6 +273,7 @@ namespace TweetShutdown
                     txtAdvLog.Text = tweet.User.ScreenName + "\n" + tweet.CreatedDate.ToLongTimeString() + "\n" + tweet.Text;
                     //MessageBox.Show(txtAdvLog.Text);
                     ProcessTweet(tweet);
+                    if (TweetShuttingDown == true) break;
                 }
             }
         }
@@ -292,28 +289,41 @@ namespace TweetShutdown
 
             if (tweetText.Contains("shutdown"))
             {
-                System.Diagnostics.Process.Start("shutdown", "-s -f -t 30"); // Shutdown
-                ProcessTweetSuccess();
+                ProcessTweetShutdown("-s -f -t 30"); // Shutdown
             }
             else if (tweetText.Contains("logoff"))
             {
-                System.Diagnostics.Process.Start("shutdown", "-l -f -t 30"); // Logoff
-                ProcessTweetSuccess();
+                ProcessTweetShutdown("-l -f -t 30"); // Logoff
             }
             else if (tweetText.Contains("restart"))
             {
-                System.Diagnostics.Process.Start("shutdown", "-r -f -t 30"); // Restart
-                ProcessTweetSuccess();
+                ProcessTweetShutdown("-r -f -t 30"); // Restart
             }
             else if (tweetText.Contains("hibernate"))
             {
-                Application.SetSuspendState(PowerState.Hibernate, true, false);
+                ProcessTweetSuspend(PowerState.Hibernate);
             }
             else if (tweetText.Contains("standby")
                     || tweetText.Contains("sleep"))
             {
-                Application.SetSuspendState(PowerState.Suspend, true, false);
+                ProcessTweetSuspend(PowerState.Suspend);
             }
+        }
+
+        private void ProcessTweetShutdown(String Arg)
+        {
+            Save();
+            TweetShuttingDown = true;
+            System.Diagnostics.Process.Start("shutdown", Arg);
+            this.Close();
+        }
+
+        private void ProcessTweetSuspend(PowerState state)
+        {
+            Save();
+            InitSince_ID();
+            TweetShuttingDown = true;
+            Application.SetSuspendState(state, true, false);
         }
 
         private void LogTwitterAccessError(String log)

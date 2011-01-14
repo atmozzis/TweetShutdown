@@ -23,8 +23,6 @@ C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\TweetShutdown.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\ResolveAssemblyReference.cache
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.Properties.Resources.resources
-C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\GenerateResource.read.1.tlog
-C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\GenerateResource.write.1.tlog
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.exe
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\TweetSharp.Next.dll
@@ -33,7 +31,6 @@ C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\Newtonsoft.Json.pdb
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.frmMain.resources
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\GenerateResource-ResGen.read.1.tlog
-C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\GenerateResource-ResGen.read.6.tlog
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\GenerateResource-ResGen.write.1.tlog
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\Hammock.dll
 C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\Hammock.pdb
@@ -60,3 +57,8 @@ E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\TweetShutdown.appl
 E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.TrustInfo.xml
 E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.exe.manifest
 E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.application
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\TweetShutdown.exe.manifest
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Release\TweetShutdown.application
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.TrustInfo.xml
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.exe.manifest
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.application
