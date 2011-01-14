@@ -22,6 +22,9 @@
             <setting name="running" serializeAs="String">
                 <value>False</value>
             </setting>
+            <setting name="pcname" serializeAs="String">
+                <value />
+            </setting>
         </TweetShutdown.Properties.Settings>
     </userSettings>
 </configuration>

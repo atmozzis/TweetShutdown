@@ -53,7 +53,9 @@ namespace TweetShutdown
             InitTwitterService();
 
             if (Properties.Settings.Default.running == true)
-                InitSince_ID();
+            {
+                RunTweetShutdown();
+            }
 
             InitMainForm();
         }
@@ -97,6 +99,7 @@ namespace TweetShutdown
         {
             lblStatus.Text = "";
             this.Width = 350;
+            this.Icon = Resources.TweetShutdown;
             notifyIcon.Icon = Resources.TweetShutdown;
 
             if (Properties.Settings.Default.running == true)
@@ -200,6 +203,7 @@ namespace TweetShutdown
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Save();
             this.notifyIcon.Visible = false;
             this.Refresh();
         }
