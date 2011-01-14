@@ -53,3 +53,8 @@ E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\GenerateResource
 E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.TrustInfo.xml
 E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.exe.manifest
 E:\Git\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.application
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetShutdown.exe.manifest
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\bin\Debug\TweetShutdown.application
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.TrustInfo.xml
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.exe.manifest
+C:\Documents and Settings\moeaun\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Debug\TweetShutdown.application
