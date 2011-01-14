@@ -3,23 +3,38 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml;
 using TweetSharp;
-using System.Diagnostics;
-using System.IO;
 using TweetShutdown.Properties;
+
 
 namespace TweetShutdown
 {
     public partial class frmMain : Form
     {
+        #region P/Invoke
+#if Active
+        [DllImport("user32", CharSet = CharSet.Auto)]
+        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
+
+        [DllImport("user32", CharSet = CharSet.Auto)]
+        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
+
+        const int GWL_EXSTYLE = -20;
+        const int WS_EX_TOOLWINDOW = 0x00000080;
+        const int WS_EX_APPWINDOW = 0x00040000;
+#endif
+        #endregion
+
         TwitterService service;
         OAuthRequestToken requestToken;
-
 
         string consumerKey = "Ya7DuTqdm59e1xOZTZBS2A";
         string consumerSecret = "aZvUPnFHsvoJAEflRfdNtRp2RcOa4TuBk1YkwHZdV3g";
@@ -41,17 +56,6 @@ namespace TweetShutdown
                 InitSince_ID();
 
             InitMainForm();
-        }
-
-        protected override CreateParams CreateParams
-        {
-            get
-            {
-                CreateParams cp = base.CreateParams;
-                // turn on WS_EX_TOOLWINDOW style bit
-                cp.ExStyle |= 0x80;
-                return cp;
-            }
         }
 
         private void InitDir()
@@ -111,12 +115,20 @@ namespace TweetShutdown
         {
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
         }
 
         private void HideForm()
         {
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+
+            #region P/Invoke Method
+#if Active
+            SetWindowLong(this.Handle, GWL_EXSTYLE, (GetWindowLong(this.Handle,GWL_EXSTYLE) | WS_EX_TOOLWINDOW) & ~WS_EX_APPWINDOW);
+#endif
+            #endregion
         }
 
         private void ChangeUIStarted()
@@ -354,6 +366,11 @@ namespace TweetShutdown
         private void txtUsername_Leave(object sender, EventArgs e)
         {
             Properties.Settings.Default.Save();
+        }
+
+        private void frmMain_SizeChanged(object sender, EventArgs e)
+        {
+            int i;
         }
     }
 }
