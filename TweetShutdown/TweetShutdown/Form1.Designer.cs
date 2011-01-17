@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblStatus = new System.Windows.Forms.Label();
             this.btnRun = new System.Windows.Forms.Button();
@@ -64,7 +63,6 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.lblStatus);
             this.groupBox1.Controls.Add(this.btnRun);
@@ -81,7 +79,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(687, 190);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
             // label5
@@ -90,17 +88,8 @@
             this.label5.Location = new System.Drawing.Point(6, 166);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
-            this.label5.TabIndex = 16;
+            this.label5.TabIndex = 5;
             this.label5.Text = "PC name : ";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 166);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(64, 13);
-            this.label4.TabIndex = 16;
-            this.label4.Text = "Username : ";
             // 
             // label3
             // 
@@ -108,7 +97,7 @@
             this.label3.Location = new System.Drawing.Point(6, 22);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
-            this.label3.TabIndex = 16;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Username : ";
             // 
             // lblStatus
@@ -117,7 +106,7 @@
             this.lblStatus.Location = new System.Drawing.Point(53, 127);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(37, 13);
-            this.lblStatus.TabIndex = 15;
+            this.lblStatus.TabIndex = 4;
             this.lblStatus.Text = "Status";
             // 
             // btnRun
@@ -126,7 +115,7 @@
             this.btnRun.Location = new System.Drawing.Point(56, 76);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(220, 36);
-            this.btnRun.TabIndex = 13;
+            this.btnRun.TabIndex = 3;
             this.btnRun.Text = "Start Tweet Shutdown!";
             this.btnRun.UseVisualStyleBackColor = true;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
@@ -137,7 +126,7 @@
             this.txtPCname.Location = new System.Drawing.Point(71, 163);
             this.txtPCname.Name = "txtPCname";
             this.txtPCname.Size = new System.Drawing.Size(92, 20);
-            this.txtPCname.TabIndex = 8;
+            this.txtPCname.TabIndex = 6;
             this.txtPCname.Text = global::TweetShutdown.Properties.Settings.Default.pcname;
             this.txtPCname.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
@@ -146,7 +135,7 @@
             this.btnAdvanced.Location = new System.Drawing.Point(208, 161);
             this.btnAdvanced.Name = "btnAdvanced";
             this.btnAdvanced.Size = new System.Drawing.Size(119, 23);
-            this.btnAdvanced.TabIndex = 12;
+            this.btnAdvanced.TabIndex = 7;
             this.btnAdvanced.Text = "Advanced Options >>";
             this.btnAdvanced.UseVisualStyleBackColor = true;
             this.btnAdvanced.Click += new System.EventHandler(this.btnAdvanced_Click);
@@ -157,7 +146,7 @@
             this.txtUsername.Location = new System.Drawing.Point(76, 19);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(251, 20);
-            this.txtUsername.TabIndex = 8;
+            this.txtUsername.TabIndex = 1;
             this.txtUsername.Text = global::TweetShutdown.Properties.Settings.Default.username;
             this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
@@ -167,7 +156,7 @@
             this.txtAdvLog.Multiline = true;
             this.txtAdvLog.Name = "txtAdvLog";
             this.txtAdvLog.Size = new System.Drawing.Size(316, 85);
-            this.txtAdvLog.TabIndex = 1;
+            this.txtAdvLog.TabIndex = 12;
             // 
             // btnAdvReStart
             // 
@@ -176,7 +165,7 @@
             this.btnAdvReStart.Location = new System.Drawing.Point(365, 70);
             this.btnAdvReStart.Name = "btnAdvReStart";
             this.btnAdvReStart.Size = new System.Drawing.Size(316, 23);
-            this.btnAdvReStart.TabIndex = 7;
+            this.btnAdvReStart.TabIndex = 11;
             this.btnAdvReStart.Text = "ReStart Service with PIN";
             this.btnAdvReStart.UseVisualStyleBackColor = true;
             this.btnAdvReStart.Click += new System.EventHandler(this.btnAdvReStart_Click);
@@ -187,7 +176,7 @@
             this.txtAdvPIN.Location = new System.Drawing.Point(485, 42);
             this.txtAdvPIN.Name = "txtAdvPIN";
             this.txtAdvPIN.Size = new System.Drawing.Size(196, 22);
-            this.txtAdvPIN.TabIndex = 6;
+            this.txtAdvPIN.TabIndex = 10;
             this.txtAdvPIN.TextChanged += new System.EventHandler(this.txtAdvPIN_TextChanged);
             // 
             // label1
@@ -197,7 +186,7 @@
             this.label1.Location = new System.Drawing.Point(362, 45);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(117, 16);
-            this.label1.TabIndex = 5;
+            this.label1.TabIndex = 9;
             this.label1.Text = "Authorization PIN :";
             // 
             // btnAdvAuthorize
@@ -206,7 +195,7 @@
             this.btnAdvAuthorize.Location = new System.Drawing.Point(365, 13);
             this.btnAdvAuthorize.Name = "btnAdvAuthorize";
             this.btnAdvAuthorize.Size = new System.Drawing.Size(316, 23);
-            this.btnAdvAuthorize.TabIndex = 4;
+            this.btnAdvAuthorize.TabIndex = 8;
             this.btnAdvAuthorize.Text = "Authorize Tweet Shutdown for Custom Mention";
             this.btnAdvAuthorize.UseVisualStyleBackColor = true;
             this.btnAdvAuthorize.Click += new System.EventHandler(this.btnAdvAuthorize_Click);
@@ -219,7 +208,7 @@
             this.chkAutoStart.Location = new System.Drawing.Point(76, 53);
             this.chkAutoStart.Name = "chkAutoStart";
             this.chkAutoStart.Size = new System.Drawing.Size(182, 17);
-            this.chkAutoStart.TabIndex = 3;
+            this.chkAutoStart.TabIndex = 2;
             this.chkAutoStart.Text = "Start Automatically with Windows";
             this.chkAutoStart.UseVisualStyleBackColor = true;
             this.chkAutoStart.CheckStateChanged += new System.EventHandler(this.chkAutoStart_CheckedChanged);
@@ -243,26 +232,26 @@
             this.btnEditSettings,
             this.btncontextExit});
             this.contextMenu.Name = "contextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(194, 70);
+            this.contextMenu.Size = new System.Drawing.Size(187, 70);
             // 
             // btncontextRun
             // 
             this.btncontextRun.Name = "btncontextRun";
-            this.btncontextRun.Size = new System.Drawing.Size(193, 22);
+            this.btncontextRun.Size = new System.Drawing.Size(186, 22);
             this.btncontextRun.Text = "&Start Tweet Shutdown!";
             this.btncontextRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // btnEditSettings
             // 
             this.btnEditSettings.Name = "btnEditSettings";
-            this.btnEditSettings.Size = new System.Drawing.Size(193, 22);
+            this.btnEditSettings.Size = new System.Drawing.Size(186, 22);
             this.btnEditSettings.Text = "&Edit Settings";
             this.btnEditSettings.Click += new System.EventHandler(this.btnEditSettings_Click);
             // 
             // btncontextExit
             // 
             this.btncontextExit.Name = "btncontextExit";
-            this.btncontextExit.Size = new System.Drawing.Size(193, 22);
+            this.btncontextExit.Size = new System.Drawing.Size(186, 22);
             this.btncontextExit.Text = "E&xit";
             this.btncontextExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -272,7 +261,7 @@
             this.btnHide.Location = new System.Drawing.Point(274, 12);
             this.btnHide.Name = "btnHide";
             this.btnHide.Size = new System.Drawing.Size(29, 23);
-            this.btnHide.TabIndex = 1;
+            this.btnHide.TabIndex = 2;
             this.btnHide.Text = "_";
             this.btnHide.UseVisualStyleBackColor = true;
             this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
@@ -283,7 +272,7 @@
             this.btnExit.Location = new System.Drawing.Point(309, 12);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(29, 23);
-            this.btnExit.TabIndex = 2;
+            this.btnExit.TabIndex = 3;
             this.btnExit.Text = "X";
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
@@ -295,7 +284,7 @@
             this.label2.Location = new System.Drawing.Point(12, 9);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(141, 23);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 0;
             this.label2.Text = "Tweet Shutdown!";
             // 
             // tmrCheckTweet
@@ -323,7 +312,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
-            this.SizeChanged += new System.EventHandler(this.frmMain_SizeChanged);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenu.ResumeLayout(false);
@@ -357,7 +345,6 @@
         private System.Windows.Forms.Timer tmrCheckTweet;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtPCname;
     }
 }

@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using System.Xml;
 using TweetSharp;
 using TweetShutdown.Properties;
+using System.Xml.Serialization;
 
 
 namespace TweetShutdown
@@ -36,11 +37,12 @@ namespace TweetShutdown
         TwitterService service;
         OAuthRequestToken requestToken;
 
+        UserSettings user;
+
         string consumerKey = "Ya7DuTqdm59e1xOZTZBS2A";
         string consumerSecret = "aZvUPnFHsvoJAEflRfdNtRp2RcOa4TuBk1YkwHZdV3g";
 
-        string exeDir;
-        string errorlogDir;
+        string exeDir, errorlogDir;
         long since_ID;
         bool TweetShuttingDown = false;
 
@@ -49,6 +51,8 @@ namespace TweetShutdown
             InitializeComponent();
 
             InitDir();
+
+            //InitUserSettings();
 
             InitTwitterService();
 
@@ -62,9 +66,27 @@ namespace TweetShutdown
 
         private void InitDir()
         {
+
+#if Inactive
             exeDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
             exeDir = exeDir.Remove(0, 6) + "\\";
+#endif
+
+            exeDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\TweetShutdown\\";
+
             errorlogDir = exeDir + "error.log";
+        }
+
+        private void InitUserSettings()
+        {
+            user = new UserSettings();
+            user.Load();
+            Properties.Settings.Default.oauthToken = user.oauthToken;
+            Properties.Settings.Default.oauthSecret = user.oauthSecret;
+            Properties.Settings.Default.username = user.username;
+            Properties.Settings.Default.pcname = user.pcname;
+            Properties.Settings.Default.autostart = user.autostart;
+            Properties.Settings.Default.running = user.running;
         }
 
         private void InitTwitterService()
@@ -118,6 +140,15 @@ namespace TweetShutdown
 
         private void Save()
         {
+#if Inactive
+            user.oauthToken = Properties.Settings.Default.oauthToken;
+            user.oauthSecret = Properties.Settings.Default.oauthSecret;
+            user.username = Properties.Settings.Default.username;
+            user.pcname = Properties.Settings.Default.pcname;
+            user.autostart = Properties.Settings.Default.autostart;
+            user.running = Properties.Settings.Default.running;
+            user.Save();
+#endif
             Properties.Settings.Default.Save();
         }
 
@@ -131,7 +162,7 @@ namespace TweetShutdown
         private void HideForm()
         {
             #region P/Invoke Method
-#if Active
+#if Inactive
             SetWindowLong(this.Handle, GWL_EXSTYLE, (GetWindowLong(this.Handle,GWL_EXSTYLE) | WS_EX_TOOLWINDOW) & ~WS_EX_APPWINDOW);
 #endif
             #endregion
@@ -161,7 +192,7 @@ namespace TweetShutdown
             if (Properties.Settings.Default.autostart == true)
             {
                 RegistryKey regKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-                regKey.SetValue(Application.ProductName, Application.ExecutablePath);
+                regKey.SetValue(Application.ProductName, Environment.SpecialFolder.StartMenu);
                 regKey.Close();
             }
             else
@@ -376,12 +407,7 @@ namespace TweetShutdown
 
         private void txtUsername_Leave(object sender, EventArgs e)
         {
-            Properties.Settings.Default.Save();
-        }
-
-        private void frmMain_SizeChanged(object sender, EventArgs e)
-        {
-            int i;
+            Save();
         }
     }
 }
