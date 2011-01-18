@@ -333,13 +333,13 @@ namespace TweetShutdown
             {
                 ProcessTweetShutdown("-s -f -t 30"); // Shutdown
             }
-            else if (tweetText.Contains("logoff"))
-            {
-                ProcessTweetShutdown("-l -f -t 30"); // Logoff
-            }
             else if (tweetText.Contains("restart"))
             {
                 ProcessTweetShutdown("-r -f -t 30"); // Restart
+            }
+            else if (tweetText.Contains("logoff"))
+            {
+                ProcessTweetShutdown("-l -f -t 30"); // Logoff
             }
             else if (tweetText.Contains("hibernate"))
             {
