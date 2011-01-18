@@ -3,11 +3,6 @@
   <assemblyIdentity name="TweetShutdown.application" version="1.0.0.9" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <description asmv2:publisher="Tweet Shutdown" asmv2:product="Tweet Shutdown" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" co.v1:createDesktopShortcut="true">
-    <subscription>
-      <update>
-        <expiration maximumAge="0" unit="days" />
-      </update>
-    </subscription>
     <deploymentProvider codebase="http://swd-wk00091/TweetShutdown/TweetShutdown.application" />
   </deployment>
   <dependency>
@@ -18,7 +13,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>M66RA0nW0x9D5top7pWIo4OPBWQ=</dsig:DigestValue>
+        <dsig:DigestValue>lb+0o1Pw0/1nd1yw+SHoX/oDPQg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

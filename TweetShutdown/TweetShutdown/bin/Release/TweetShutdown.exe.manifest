@@ -94,14 +94,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TweetShutdown.exe" size="196096">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TweetShutdown.exe" size="194560">
       <assemblyIdentity name="TweetShutdown" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Mdtxz8FruIQxDK4VS+k/TpmiH4A=</dsig:DigestValue>
+        <dsig:DigestValue>vTcpMtn+jj/lE611yZzNCbywHE8=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

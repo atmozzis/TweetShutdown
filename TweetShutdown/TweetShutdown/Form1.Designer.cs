@@ -43,7 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdvAuthorize = new System.Windows.Forms.Button();
             this.chkAutoStart = new System.Windows.Forms.CheckBox();
-            this.tmrClearStatus = new System.Windows.Forms.Timer(this.components);
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btncontextRun = new System.Windows.Forms.ToolStripMenuItem();
@@ -213,11 +212,6 @@
             this.chkAutoStart.UseVisualStyleBackColor = true;
             this.chkAutoStart.CheckStateChanged += new System.EventHandler(this.chkAutoStart_CheckedChanged);
             // 
-            // tmrClearStatus
-            // 
-            this.tmrClearStatus.Enabled = true;
-            this.tmrClearStatus.Tick += new System.EventHandler(this.tmrClearStatus_Tick);
-            // 
             // notifyIcon
             // 
             this.notifyIcon.ContextMenuStrip = this.contextMenu;
@@ -306,7 +300,6 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmMain";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -324,7 +317,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.CheckBox chkAutoStart;
-        private System.Windows.Forms.Timer tmrClearStatus;
         private System.Windows.Forms.NotifyIcon notifyIcon;
         private System.Windows.Forms.ContextMenuStrip contextMenu;
         private System.Windows.Forms.ToolStripMenuItem btnEditSettings;

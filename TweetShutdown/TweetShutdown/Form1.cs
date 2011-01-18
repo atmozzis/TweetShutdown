@@ -37,12 +37,10 @@ namespace TweetShutdown
         TwitterService service;
         OAuthRequestToken requestToken;
 
-        UserSettings user;
+        String consumerKey = "Ya7DuTqdm59e1xOZTZBS2A";
+        String consumerSecret = "aZvUPnFHsvoJAEflRfdNtRp2RcOa4TuBk1YkwHZdV3g";
 
-        string consumerKey = "Ya7DuTqdm59e1xOZTZBS2A";
-        string consumerSecret = "aZvUPnFHsvoJAEflRfdNtRp2RcOa4TuBk1YkwHZdV3g";
-
-        string exeDir, errorlogDir;
+        String AppdataDir, errorlogDir, StartmenuAppPath, StartupPath;
         long since_ID;
         bool TweetShuttingDown = false;
 
@@ -51,8 +49,6 @@ namespace TweetShutdown
             InitializeComponent();
 
             InitDir();
-
-            //InitUserSettings();
 
             InitTwitterService();
 
@@ -66,27 +62,14 @@ namespace TweetShutdown
 
         private void InitDir()
         {
+            AppdataDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\TweetShutdown\\";
 
-#if Inactive
-            exeDir = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
-            exeDir = exeDir.Remove(0, 6) + "\\";
-#endif
+            errorlogDir = AppdataDir + "error.log";
 
-            exeDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\TweetShutdown\\";
-
-            errorlogDir = exeDir + "error.log";
-        }
-
-        private void InitUserSettings()
-        {
-            user = new UserSettings();
-            user.Load();
-            Properties.Settings.Default.oauthToken = user.oauthToken;
-            Properties.Settings.Default.oauthSecret = user.oauthSecret;
-            Properties.Settings.Default.username = user.username;
-            Properties.Settings.Default.pcname = user.pcname;
-            Properties.Settings.Default.autostart = user.autostart;
-            Properties.Settings.Default.running = user.running;
+            StartmenuAppPath = Environment.GetFolderPath(Environment.SpecialFolder.StartMenu)
+                        + "\\Programs\\Tweet Shutdown\\Tweet Shutdown.appref-ms";
+            StartupPath = Environment.GetFolderPath(Environment.SpecialFolder.Startup)
+                        + "\\Tweet Shutdown.appref-ms";
         }
 
         private void InitTwitterService()
@@ -140,15 +123,6 @@ namespace TweetShutdown
 
         private void Save()
         {
-#if Inactive
-            user.oauthToken = Properties.Settings.Default.oauthToken;
-            user.oauthSecret = Properties.Settings.Default.oauthSecret;
-            user.username = Properties.Settings.Default.username;
-            user.pcname = Properties.Settings.Default.pcname;
-            user.autostart = Properties.Settings.Default.autostart;
-            user.running = Properties.Settings.Default.running;
-            user.Save();
-#endif
             Properties.Settings.Default.Save();
         }
 
@@ -191,15 +165,18 @@ namespace TweetShutdown
         {
             if (Properties.Settings.Default.autostart == true)
             {
-                RegistryKey regKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-                regKey.SetValue(Application.ProductName, Environment.SpecialFolder.StartMenu);
-                regKey.Close();
+                if (File.Exists(StartmenuAppPath))
+                {
+                    File.Copy(StartmenuAppPath, StartupPath, true);
+                }
+                else
+                {
+                    lblStatus.Text = "Fatal Error : Working Files Missing!";
+                }
             }
             else
             {
-                RegistryKey regKey = Registry.CurrentUser.OpenSubKey("Software\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-                regKey.DeleteValue(Application.ProductName);
-                regKey.Close();
+                File.Delete(StartupPath);
             }
         }
 
@@ -398,11 +375,6 @@ namespace TweetShutdown
             File.AppendAllText(errorlogDir, "\n" + Date + " " + Time + "\t" + log);
             lblStatus.Text = "Error: Failed to access Twitter!";
             StopTweetShutdown();
-        }
-
-        private void tmrClearStatus_Tick(object sender, EventArgs e)
-        {
-
         }
 
         private void txtUsername_Leave(object sender, EventArgs e)
