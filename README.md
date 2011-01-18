@@ -22,7 +22,7 @@ http://github.com/aungthumoe5/Tweet-Shutdown/
   
 =====Download Now!=====  
   
-Zip Installer: [Download](https://github.com/downloads/aungthumoe5/Tweet-Shutdown/TweetShutdown%20Installer.zip)  
+Zip Installer: [Download](https://github.com/downloads/aungthumoe5/Tweet-Shutdown/Installer%20-%20TweetShutdown.zip)  
   
-7z  Installer: [Download](https://github.com/downloads/aungthumoe5/Tweet-Shutdown/TweetShutdown%20Installer.7z)  
+7z  Installer: [Download](https://github.com/downloads/aungthumoe5/Tweet-Shutdown/Installer%20-%20TweetShutdown.7z)  
   
