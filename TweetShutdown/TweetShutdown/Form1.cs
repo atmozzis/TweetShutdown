@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using TweetSharp;
 using TweetShutdown.Properties;
@@ -18,7 +19,7 @@ namespace TweetShutdown
 
         Userdata userdata;
 
-        String AppdataDir, errorlogDir, savelogDir, StartmenuAppPath, StartupPath;
+        String AppdataDir, errorlogDir, savelogDir;
         long since_ID;
         bool TweetShuttingDown = false;
 
@@ -46,11 +47,6 @@ namespace TweetShutdown
 
             errorlogDir = AppdataDir + "error.log";
             savelogDir = AppdataDir + "userdata.log";
-
-            StartmenuAppPath = Environment.GetFolderPath(Environment.SpecialFolder.StartMenu)
-                        + "\\Programs\\Tweet Shutdown\\Tweet Shutdown.appref-ms";
-            StartupPath = Environment.GetFolderPath(Environment.SpecialFolder.Startup)
-                        + "\\Tweet Shutdown.appref-ms";
         }
 
         private void InitUserData()
@@ -141,18 +137,11 @@ namespace TweetShutdown
         {
             if (userdata.AutoStart == true)
             {
-                if (File.Exists(StartmenuAppPath))
-                {
-                    File.Copy(StartmenuAppPath, StartupPath, true);
-                }
-                else
-                {
-                    lblStatus.Text = "Fatal Error : Working Files Missing!";
-                }
+                Helper.SetAutoStart("TweetShutdown", Assembly.GetExecutingAssembly().Location);
             }
             else
             {
-                File.Delete(StartupPath);
+                Helper.UnSetAutoStart("TweetShutdown");
             }
         }
 
