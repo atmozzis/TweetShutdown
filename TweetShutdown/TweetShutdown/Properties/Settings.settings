@@ -1,24 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TweetShutdown.Properties" GeneratedClassName="Settings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
   <Profiles />
-  <Settings>
-    <Setting Name="oauthToken" Type="System.String" Scope="User">
-      <Value Profile="(Default)">236756857-TFOCeLwHApOJ2CdaS66D3u7ZMArXBZz9YTaLvSHu</Value>
-    </Setting>
-    <Setting Name="oauthSecret" Type="System.String" Scope="User">
-      <Value Profile="(Default)">GdyRKinH9uBNipBXcEQHqXYa6IjHF2FmcYzdNX6mtQ8</Value>
-    </Setting>
-    <Setting Name="autostart" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="username" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-    <Setting Name="running" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="pcname" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
-  </Settings>
+  <Settings />
 </SettingsFile>

@@ -121,12 +121,10 @@
             // 
             // txtPCname
             // 
-            this.txtPCname.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TweetShutdown.Properties.Settings.Default, "pcname", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtPCname.Location = new System.Drawing.Point(71, 163);
             this.txtPCname.Name = "txtPCname";
             this.txtPCname.Size = new System.Drawing.Size(92, 20);
             this.txtPCname.TabIndex = 6;
-            this.txtPCname.Text = global::TweetShutdown.Properties.Settings.Default.pcname;
             this.txtPCname.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
             // btnAdvanced
@@ -141,12 +139,10 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.DataBindings.Add(new System.Windows.Forms.Binding("Text", global::TweetShutdown.Properties.Settings.Default, "username", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.txtUsername.Location = new System.Drawing.Point(76, 19);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(251, 20);
             this.txtUsername.TabIndex = 1;
-            this.txtUsername.Text = global::TweetShutdown.Properties.Settings.Default.username;
             this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
             // txtAdvLog
@@ -202,8 +198,6 @@
             // chkAutoStart
             // 
             this.chkAutoStart.AutoSize = true;
-            this.chkAutoStart.Checked = global::TweetShutdown.Properties.Settings.Default.autostart;
-            this.chkAutoStart.DataBindings.Add(new System.Windows.Forms.Binding("Checked", global::TweetShutdown.Properties.Settings.Default, "autostart", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
             this.chkAutoStart.Location = new System.Drawing.Point(76, 53);
             this.chkAutoStart.Name = "chkAutoStart";
             this.chkAutoStart.Size = new System.Drawing.Size(182, 17);
@@ -300,11 +294,10 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmMain";
-            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.WindowState = System.Windows.Forms.FormWindowState.Minimized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenu.ResumeLayout(false);

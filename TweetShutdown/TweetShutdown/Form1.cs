@@ -1,46 +1,24 @@
-﻿using Microsoft.Win32;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml;
 using TweetSharp;
 using TweetShutdown.Properties;
-using System.Xml.Serialization;
-
 
 namespace TweetShutdown
 {
     public partial class frmMain : Form
     {
-        #region P/Invoke
-#if Active
-        [DllImport("user32", CharSet = CharSet.Auto)]
-        private static extern int GetWindowLong(IntPtr hWnd, int nIndex);
-
-        [DllImport("user32", CharSet = CharSet.Auto)]
-        private static extern int SetWindowLong(IntPtr hWnd, int nIndex, int dwNewLong);
-
-        const int GWL_EXSTYLE = -20;
-        const int WS_EX_TOOLWINDOW = 0x00000080;
-        const int WS_EX_APPWINDOW = 0x00040000;
-#endif
-        #endregion
-
         TwitterService service;
         OAuthRequestToken requestToken;
 
         String consumerKey = "Ya7DuTqdm59e1xOZTZBS2A";
         String consumerSecret = "aZvUPnFHsvoJAEflRfdNtRp2RcOa4TuBk1YkwHZdV3g";
 
-        String AppdataDir, errorlogDir, StartmenuAppPath, StartupPath;
+        Userdata userdata;
+
+        String AppdataDir, errorlogDir, savelogDir, StartmenuAppPath, StartupPath;
         long since_ID;
         bool TweetShuttingDown = false;
 
@@ -50,9 +28,11 @@ namespace TweetShutdown
 
             InitDir();
 
+            InitUserData();
+
             InitTwitterService();
 
-            if (Properties.Settings.Default.running == true)
+            if (userdata.Running == true)
             {
                 RunTweetShutdown();
             }
@@ -65,6 +45,7 @@ namespace TweetShutdown
             AppdataDir = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData) + "\\TweetShutdown\\";
 
             errorlogDir = AppdataDir + "error.log";
+            savelogDir = AppdataDir + "userdata.log";
 
             StartmenuAppPath = Environment.GetFolderPath(Environment.SpecialFolder.StartMenu)
                         + "\\Programs\\Tweet Shutdown\\Tweet Shutdown.appref-ms";
@@ -72,10 +53,15 @@ namespace TweetShutdown
                         + "\\Tweet Shutdown.appref-ms";
         }
 
+        private void InitUserData()
+        {
+            userdata = new Userdata(savelogDir);
+        }
+
         private void InitTwitterService()
         {
             service = new TwitterService(consumerKey, consumerSecret);
-            service.AuthenticateWith(Properties.Settings.Default.oauthToken, Properties.Settings.Default.oauthSecret);
+            service.AuthenticateWith(userdata.OAuthToken, userdata.OAuthSecret);
         }
 
         private void InitSince_ID()
@@ -107,43 +93,33 @@ namespace TweetShutdown
             this.Icon = Resources.TweetShutdown;
             notifyIcon.Icon = Resources.TweetShutdown;
 
-            if (Properties.Settings.Default.running == true)
-            {
-                ChangeUIStarted();
-                //HideForm();       //  Design default, not necessary
-                this.Refresh();
-            }
-            else
-            {
-                ChangeUIStopped();
-                ShowForm();
-                this.Refresh();
-            }
+            this.txtUsername.DataBindings.Add("Text", userdata, "Username");
+            this.txtPCname.DataBindings.Add("Text", userdata, "PCname");
+            this.chkAutoStart.DataBindings.Add("Checked", userdata, "AutoStart");
         }
 
         private void Save()
         {
-            Properties.Settings.Default.Save();
+            String error = userdata.Save(savelogDir);
+
+            if (!String.IsNullOrEmpty(error))
+            {
+                String Date = DateTime.Now.ToShortDateString();
+                String Time = DateTime.Now.ToShortTimeString();
+                File.AppendAllText(errorlogDir, "\r\n" + Date + " " + Time + "\t" + error);
+                lblStatus.Text = "Error: " + error;
+            }
         }
 
         private void ShowForm()
         {
-            this.WindowState = FormWindowState.Normal;
-            this.ShowInTaskbar = true;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Show();
+            this.Focus();
         }
 
         private void HideForm()
         {
-            #region P/Invoke Method
-#if Inactive
-            SetWindowLong(this.Handle, GWL_EXSTYLE, (GetWindowLong(this.Handle,GWL_EXSTYLE) | WS_EX_TOOLWINDOW) & ~WS_EX_APPWINDOW);
-#endif
-            #endregion
-
-            this.WindowState = FormWindowState.Minimized;
-            this.ShowInTaskbar = false;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Hide();
         }
 
         private void ChangeUIStarted()
@@ -163,7 +139,7 @@ namespace TweetShutdown
 
         private void chkAutoStart_CheckedChanged(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.autostart == true)
+            if (userdata.AutoStart == true)
             {
                 if (File.Exists(StartmenuAppPath))
                 {
@@ -218,13 +194,13 @@ namespace TweetShutdown
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            if (Properties.Settings.Default.username.Trim() == "")
+            if (userdata.Username.Trim() == "")
             {
                 lblStatus.Text = "Error: No Username Entered!";
                 return;
             }
 
-            if (Properties.Settings.Default.running == false)
+            if (userdata.Running == false)
             {
                 RunTweetShutdown();
             }
@@ -236,7 +212,7 @@ namespace TweetShutdown
 
         private void RunTweetShutdown()
         {
-            Properties.Settings.Default.running = true;
+            userdata.Running = true;
             Save();
 
             ChangeUIStarted();
@@ -247,7 +223,7 @@ namespace TweetShutdown
 
         private void StopTweetShutdown()
         {
-            Properties.Settings.Default.running = false;
+            userdata.Running = false;
             Save();
 
             ChangeUIStopped();
@@ -273,8 +249,8 @@ namespace TweetShutdown
             // Step 4 - User authenticates using the Access Token
             service.AuthenticateWith(access.Token, access.TokenSecret);
 
-            Properties.Settings.Default.oauthToken = access.Token;
-            Properties.Settings.Default.oauthSecret = access.TokenSecret;
+            userdata.OAuthToken = access.Token;
+            userdata.OAuthSecret = access.TokenSecret;
             Save();
 
             RunTweetShutdown();
@@ -310,7 +286,7 @@ namespace TweetShutdown
             IEnumerable<TwitterStatus> tweetsByUser = service.ListTweetsMentioningMeSince(since_ID, 200);
             foreach (var tweet in tweetsByUser)
             {
-                if (tweet.User.ScreenName == Properties.Settings.Default.username)
+                if (tweet.User.ScreenName == userdata.Username)
                 {
                     txtAdvLog.Text = tweet.User.ScreenName + "\n" + tweet.CreatedDate.ToLongTimeString() + "\n" + tweet.Text;
                     //MessageBox.Show(txtAdvLog.Text);
@@ -324,7 +300,7 @@ namespace TweetShutdown
         {
             String tweetText = Tweet.Text.Trim().ToLower();
 
-            if (!tweetText.Contains(Properties.Settings.Default.pcname))
+            if (!tweetText.Contains(userdata.PCname))
             {
                 return;
             }
@@ -372,7 +348,7 @@ namespace TweetShutdown
         {
             String Date = DateTime.Now.ToShortDateString();
             String Time = DateTime.Now.ToShortTimeString();
-            File.AppendAllText(errorlogDir, "\n" + Date + " " + Time + "\t" + log);
+            File.AppendAllText(errorlogDir, "\r\n" + Date + " " + Time + "\t" + log);
             lblStatus.Text = "Error: Failed to access Twitter!";
             StopTweetShutdown();
         }
@@ -380,6 +356,20 @@ namespace TweetShutdown
         private void txtUsername_Leave(object sender, EventArgs e)
         {
             Save();
+        }
+
+        private void frmMain_Shown(object sender, EventArgs e)
+        {
+            if (userdata.Running == true)
+            {
+                ChangeUIStarted();
+                HideForm();
+            }
+            else
+            {
+                ChangeUIStopped();
+                //ShowForm();       // Initial State
+            }
         }
     }
 }
