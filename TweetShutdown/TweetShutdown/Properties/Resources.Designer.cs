@@ -60,9 +60,16 @@ namespace TweetShutdown.Properties {
             }
         }
         
-        internal static System.Drawing.Icon TweetShutdown {
+        internal static System.Drawing.Bitmap _091094_blue_tiedyed_cloth_icon_signs_electrical_shock3 {
             get {
-                object obj = ResourceManager.GetObject("TweetShutdown", resourceCulture);
+                object obj = ResourceManager.GetObject("_091094_blue_tiedyed_cloth_icon_signs_electrical_shock3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Icon _091094_blue_tiedyed_cloth_icon_signs_electrical_shock31 {
+            get {
+                object obj = ResourceManager.GetObject("_091094_blue_tiedyed_cloth_icon_signs_electrical_shock31", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

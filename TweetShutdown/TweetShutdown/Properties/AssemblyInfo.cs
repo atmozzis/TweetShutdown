@@ -6,12 +6,12 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TweetShutdown")]
-[assembly: AssemblyDescription("Shutdown your PC remotely with Tweets")]
+[assembly: AssemblyDescription("Shutdown your PC with Tweets!")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("@tM")]
 [assembly: AssemblyProduct("TweetShutdown")]
 [assembly: AssemblyCopyright("Copyright ©  2010")]
-[assembly: AssemblyTrademark("TweetShutdown")]
+[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
 // Setting ComVisible to false makes the types in this assembly not visible 

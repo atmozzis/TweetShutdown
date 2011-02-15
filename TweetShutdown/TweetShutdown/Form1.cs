@@ -86,8 +86,6 @@ namespace TweetShutdown
         {
             lblStatus.Text = "";
             this.Width = 350;
-            this.Icon = Resources.TweetShutdown;
-            notifyIcon.Icon = Resources.TweetShutdown;
 
             this.txtUsername.DataBindings.Add("Text", userdata, "Username");
             this.txtPCname.DataBindings.Add("Text", userdata, "PCname");

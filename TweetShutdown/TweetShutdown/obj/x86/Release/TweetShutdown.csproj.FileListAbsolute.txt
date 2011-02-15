@@ -84,3 +84,5 @@ C:\Documents and Settings\moeaun\My Documents\Visual Studio 2010\Projects\Tweet-
 C:\Documents and Settings\moeaun\My Documents\Visual Studio 2010\Projects\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.TrustInfo.xml
 C:\Documents and Settings\moeaun\My Documents\Visual Studio 2010\Projects\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.exe.manifest
 C:\Documents and Settings\moeaun\My Documents\Visual Studio 2010\Projects\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.application
+C:\Documents and Settings\moeaun\My Documents\Visual Studio 2010\Projects\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\TweetShutdown.g.resources
+C:\Documents and Settings\moeaun\My Documents\Visual Studio 2010\Projects\Tweet-Shutdown\TweetShutdown\TweetShutdown\obj\x86\Release\GenerateResource-ResGen.read.4.tlog

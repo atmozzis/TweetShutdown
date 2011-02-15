@@ -26,8 +26,8 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <UpdateUrl>http://localhost/TweetShutdown/</UpdateUrl>
-    <ProductName>Tweet Shutdown</ProductName>
-    <PublisherName>Tweet Shutdown</PublisherName>
+    <ProductName>TweetShutdown</ProductName>
+    <PublisherName>TweetShutdown</PublisherName>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
     <AutorunEnabled>true</AutorunEnabled>
     <ApplicationRevision>11</ApplicationRevision>
@@ -70,11 +70,11 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>Resources\P1000762.ico</ApplicationIcon>
+    <ApplicationIcon>images\091094-blue-tiedyed-cloth-icon-signs-electrical-shock3.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
@@ -155,7 +155,10 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\P1000762.ico" />
+    <Resource Include="images\091094-blue-tiedyed-cloth-icon-signs-electrical-shock3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="images\091094-blue-tiedyed-cloth-icon-signs-electrical-shock3.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
