@@ -42,6 +42,13 @@ namespace TweetShutdown
         public static void UnSetAutoStart(string keyName)
         {
             RegistryKey key = Registry.CurrentUser.CreateSubKey(RUN_LOCATION);
+            if (key == null)
+                return;
+
+            string value = (string)key.GetValue(keyName);
+            if (value == null)
+                return;
+
             key.DeleteValue(keyName);
         }
     }

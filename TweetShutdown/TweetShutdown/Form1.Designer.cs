@@ -48,9 +48,9 @@
             this.contextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btncontextRun = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btncontextExit = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrCheckTweet = new System.Windows.Forms.Timer(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1.SuspendLayout();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -128,7 +128,7 @@
             // 
             // btnAdvanced
             // 
-            this.btnAdvanced.Location = new System.Drawing.Point(208, 161);
+            this.btnAdvanced.Location = new System.Drawing.Point(197, 161);
             this.btnAdvanced.Name = "btnAdvanced";
             this.btnAdvanced.Size = new System.Drawing.Size(119, 23);
             this.btnAdvanced.TabIndex = 7;
@@ -140,7 +140,7 @@
             // 
             this.txtUsername.Location = new System.Drawing.Point(76, 19);
             this.txtUsername.Name = "txtUsername";
-            this.txtUsername.Size = new System.Drawing.Size(251, 20);
+            this.txtUsername.Size = new System.Drawing.Size(182, 20);
             this.txtUsername.TabIndex = 1;
             this.txtUsername.Leave += new System.EventHandler(this.txtUsername_Leave);
             // 
@@ -203,7 +203,7 @@
             this.chkAutoStart.TabIndex = 2;
             this.chkAutoStart.Text = "Start Automatically with Windows";
             this.chkAutoStart.UseVisualStyleBackColor = true;
-            this.chkAutoStart.CheckStateChanged += new System.EventHandler(this.chkAutoStart_CheckedChanged);
+            this.chkAutoStart.CheckedChanged += new System.EventHandler(this.chkAutoStart_CheckedChanged);
             // 
             // notifyIcon
             // 
@@ -238,6 +238,11 @@
             this.btnEditSettings.Text = "&Edit Settings";
             this.btnEditSettings.Click += new System.EventHandler(this.btnEditSettings_Click);
             // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(183, 6);
+            // 
             // btncontextExit
             // 
             this.btncontextExit.Name = "btncontextExit";
@@ -249,11 +254,6 @@
             // 
             this.tmrCheckTweet.Interval = 15000;
             this.tmrCheckTweet.Tick += new System.EventHandler(this.tmrCheckTweet_Tick);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(183, 6);
             // 
             // frmMain
             // 

@@ -89,10 +89,20 @@ namespace TweetShutdown
 
             this.txtUsername.DataBindings.Add("Text", userdata, "Username");
             this.txtPCname.DataBindings.Add("Text", userdata, "PCname");
-            this.chkAutoStart.DataBindings.Add("Checked", userdata, "AutoStart");
-
             userdata.AutoStart = Helper.IsAutoStartEnabled("TweetShutdown", Assembly.GetExecutingAssembly().Location);
+            this.chkAutoStart.DataBindings.Add("Checked", userdata, "AutoStart");
             Save();
+
+            if (userdata.Running == true)
+            {
+                ChangeUIStarted();
+                HideForm();
+            }
+            else
+            {
+                ChangeUIStopped();
+                ShowForm();       // Initial State
+            }
         }
 
         private void Save()
@@ -136,7 +146,7 @@ namespace TweetShutdown
 
         private void chkAutoStart_CheckedChanged(object sender, EventArgs e)
         {
-            if (userdata.AutoStart == true)
+            if (chkAutoStart.Checked)
             {
                 Helper.SetAutoStart("TweetShutdown", Assembly.GetExecutingAssembly().Location);
             }
@@ -360,7 +370,7 @@ namespace TweetShutdown
             if (userdata.Running == true)
             {
                 ChangeUIStarted();
-                HideForm();
+                //HideForm();
             }
             else
             {
