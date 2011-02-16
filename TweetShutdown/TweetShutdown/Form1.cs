@@ -90,6 +90,9 @@ namespace TweetShutdown
             this.txtUsername.DataBindings.Add("Text", userdata, "Username");
             this.txtPCname.DataBindings.Add("Text", userdata, "PCname");
             this.chkAutoStart.DataBindings.Add("Checked", userdata, "AutoStart");
+
+            userdata.AutoStart = Helper.IsAutoStartEnabled("TweetShutdown", Assembly.GetExecutingAssembly().Location);
+            Save();
         }
 
         private void Save()
@@ -143,14 +146,12 @@ namespace TweetShutdown
             }
         }
 
-        private void btnHide_Click(object sender, EventArgs e)
-        {
-            HideForm();
-        }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Save();
+            this.notifyIcon.Visible = false;
+            this.Refresh();
+            Application.Exit();
         }
 
         private void btnEditSettings_Click(object sender, EventArgs e)
@@ -174,9 +175,18 @@ namespace TweetShutdown
 
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Save();
-            this.notifyIcon.Visible = false;
-            this.Refresh();
+            if (e.CloseReason == CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Save();
+                HideForm();
+            }
+            else
+            {
+                Save();
+                this.notifyIcon.Visible = false;
+                this.Refresh();
+            }
         }
 
         private void btnRun_Click(object sender, EventArgs e)

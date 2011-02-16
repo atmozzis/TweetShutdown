@@ -49,10 +49,8 @@
             this.btncontextRun = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.btncontextExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnHide = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
             this.tmrCheckTweet = new System.Windows.Forms.Timer(this.components);
-            this.btnExit = new System.Windows.Forms.Button();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.groupBox1.SuspendLayout();
             this.contextMenu.SuspendLayout();
             this.SuspendLayout();
@@ -75,10 +73,10 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btnAdvAuthorize);
             this.groupBox1.Controls.Add(this.chkAutoStart);
-            this.groupBox1.Location = new System.Drawing.Point(9, 38);
+            this.groupBox1.Location = new System.Drawing.Point(9, 9);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(687, 190);
+            this.groupBox1.Size = new System.Drawing.Size(687, 191);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             // 
@@ -220,9 +218,10 @@
             this.contextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btncontextRun,
             this.btnEditSettings,
+            this.toolStripSeparator1,
             this.btncontextExit});
             this.contextMenu.Name = "contextMenuStrip1";
-            this.contextMenu.Size = new System.Drawing.Size(187, 70);
+            this.contextMenu.Size = new System.Drawing.Size(187, 76);
             // 
             // btncontextRun
             // 
@@ -233,6 +232,7 @@
             // 
             // btnEditSettings
             // 
+            this.btnEditSettings.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEditSettings.Name = "btnEditSettings";
             this.btnEditSettings.Size = new System.Drawing.Size(186, 22);
             this.btnEditSettings.Text = "&Edit Settings";
@@ -245,67 +245,35 @@
             this.btncontextExit.Text = "E&xit";
             this.btncontextExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
-            // btnHide
-            // 
-            this.btnHide.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHide.Location = new System.Drawing.Point(274, 12);
-            this.btnHide.Name = "btnHide";
-            this.btnHide.Size = new System.Drawing.Size(29, 23);
-            this.btnHide.TabIndex = 2;
-            this.btnHide.Text = "_";
-            this.btnHide.UseVisualStyleBackColor = true;
-            this.btnHide.Click += new System.EventHandler(this.btnHide_Click);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(141, 23);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Tweet Shutdown!";
-            // 
             // tmrCheckTweet
             // 
             this.tmrCheckTweet.Interval = 15000;
             this.tmrCheckTweet.Tick += new System.EventHandler(this.tmrCheckTweet_Tick);
             // 
-            // btnExit
+            // toolStripSeparator1
             // 
-            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExit.Location = new System.Drawing.Point(309, 12);
-            this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(29, 23);
-            this.btnExit.TabIndex = 3;
-            this.btnExit.Text = "X";
-            this.btnExit.UseVisualStyleBackColor = true;
-            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(183, 6);
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 237);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(705, 209);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnExit);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnHide);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmMain";
-            this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "TweetShutdown!";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Shown += new System.EventHandler(this.frmMain_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.contextMenu.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -321,8 +289,6 @@
         private System.Windows.Forms.TextBox txtAdvPIN;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtAdvLog;
-        private System.Windows.Forms.Button btnHide;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnAdvanced;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.Button btnAdvAuthorize;
@@ -333,7 +299,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtPCname;
-        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 
